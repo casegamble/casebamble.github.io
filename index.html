@@ -784,7 +784,21 @@ async function syncToSupabase() {
 // ========================================
 function hardReset() {
     localStorage.clear();
-    location.reload();
+    // Don't reload — just show username modal directly with fresh state
+    // Re-init player ID since we cleared storage
+    playerId = 'p_' + Math.random().toString(36).substr(2,12) + Date.now().toString(36);
+    localStorage.setItem('playerId', playerId);
+    playerUsername = null;
+    playerBalance = 0;
+    casesOpened = 0;
+    bestItem = null;
+    bestItemRarity = null;
+    userCases = [];
+    localStorage.setItem('userCases', JSON.stringify([]));
+    localStorage.setItem('userWins', JSON.stringify([]));
+    updateBalanceDisplay();
+    renderInventory();
+    showUsernameModal();
 }
 
 window.addEventListener('load', async () => {
