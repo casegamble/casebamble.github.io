@@ -782,9 +782,30 @@ async function syncToSupabase() {
 // ========================================
 // INIT: check if user needs username
 // ========================================
-window.addEventListener('load', () => {
-    if (!playerUsername) showUsernameModal();
-    else syncToSupabase();
+function hardReset() {
+    localStorage.clear();
+    location.reload();
+}
+
+window.addEventListener('load', async () => {
+    if (!playerUsername) {
+        showUsernameModal();
+        return;
+    }
+    // Check if this player still exists in Supabase — if deleted, full reset
+    try {
+        const result = await sbFetch(
+            'players?select=id&id=eq.' + encodeURIComponent(playerId),
+            'GET', null, { 'Prefer': 'return=representation' }
+        );
+        if (result && result.length === 0) {
+            hardReset();
+            return;
+        }
+    } catch(e) {
+        // Offline — let them in normally
+    }
+    syncToSupabase();
 });
 
 // ========================================
