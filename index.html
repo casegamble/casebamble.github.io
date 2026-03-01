@@ -1185,6 +1185,38 @@ document.addEventListener('input', e => {
     }
 });
 
+function renderLeaderboardTable(data, mode) {
+    const searchVal = document.getElementById('lbSearchInput') ? document.getElementById('lbSearchInput').value.toLowerCase() : '';
+    const filtered = searchVal ? data.filter(r => (r.username || '').toLowerCase().includes(searchVal)) : data;
+    const wrap = document.getElementById('lbTableWrap');
+    if (!filtered.length) { wrap.innerHTML = '<div class="lb-loading">NO PLAYERS FOUND</div>'; return; }
+
+    let html = '<table class="leaderboard-table"><thead><tr><th>#</th><th>PLAYER</th>';
+    if (mode === 'balance') html += '<th>BALANCE</th><th>BEST ITEM</th>';
+    else html += '<th>CASES OPENED</th><th>BEST ITEM</th>';
+    html += '</tr></thead><tbody>';
+
+    filtered.forEach(row => {
+        const rank = data.indexOf(row) + 1;
+        const isMe = row.id === playerId;
+        const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+        const rankDisplay = rank <= 3 ? ['🥇','🥈','🥉'][rank-1] : rank;
+        const bestItemClass = row.best_item_rarity ? ' ' + row.best_item_rarity : '';
+        html += '<tr class="lb-row' + (isMe ? ' is-me' : '') + '">' +
+            '<td class="lb-rank ' + rankClass + '">' + rankDisplay + '</td>' +
+            '<td class="lb-username">' + escapeHtml(row.username || 'Anonymous') + (isMe ? '<span class="you-badge">YOU</span>' : '') + '</td>';
+        if (mode === 'balance') {
+            html += '<td class="lb-value">$ ' + (parseFloat(row.balance) || 0).toFixed(2) + '</td>';
+        } else {
+            html += '<td class="lb-value">' + (row.cases_opened || 0) + '</td>';
+        }
+        html += '<td class="lb-best-item' + bestItemClass + '">' + (row.best_item ? escapeHtml(row.best_item) : '—') + '</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table>';
+    wrap.innerHTML = html;
+}
+
 async function loadLeaderboard(mode) {
     const wrap = document.getElementById('lbTableWrap');
     wrap.innerHTML = '<div class="lb-loading">LOADING...</div>';
