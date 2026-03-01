@@ -302,6 +302,47 @@
         .rarity-group-header.covert { color: #eb4b4b; }
         .rarity-group-header.extraordinary { color: #e4ae39; }
         @media (max-width: 1200px) { .inventory-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); } }
+
+        /* ====== USERNAME SETUP MODAL ====== */
+        .username-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.97); z-index:9000; align-items:center; justify-content:center; }
+        .username-modal.active { display:flex; }
+        .username-modal-box { background:linear-gradient(180deg,rgba(42,37,32,0.98) 0%,rgba(26,22,18,0.98) 100%); border:1px solid rgba(255,255,255,0.15); padding:50px 60px; text-align:center; max-width:500px; width:90%; }
+        .username-modal-title { font-size:28px; font-weight:700; color:#fff; letter-spacing:2px; margin-bottom:10px; }
+        .username-modal-sub { font-size:13px; color:rgba(255,255,255,0.4); letter-spacing:1px; margin-bottom:30px; }
+        .username-input { width:100%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:18px; font-weight:700; padding:14px 20px; letter-spacing:1px; text-align:center; outline:none; margin-bottom:20px; font-family:inherit; }
+        .username-input:focus { border-color:#5cb3e0; }
+        .username-confirm-btn { padding:14px 50px; background:rgba(92,179,224,0.2); border:1px solid rgba(92,179,224,0.5); color:#5cb3e0; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:2px; cursor:pointer; transition:all 0.2s; }
+        .username-confirm-btn:hover { background:rgba(92,179,224,0.3); border-color:rgba(92,179,224,0.8); }
+        /* ====== LEADERBOARD ====== */
+        .leaderboard-container { padding:40px; max-width:1000px; margin:0 auto; }
+        .leaderboard-title { font-size:28px; font-weight:700; color:#fff; letter-spacing:3px; text-transform:uppercase; margin-bottom:8px; }
+        .leaderboard-sub { font-size:13px; color:rgba(255,255,255,0.4); letter-spacing:1px; margin-bottom:30px; }
+        .leaderboard-tabs { display:flex; gap:0; margin-bottom:30px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .lb-tab { padding:12px 30px; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.2s; }
+        .lb-tab.active { color:#5cb3e0; border-bottom-color:#5cb3e0; }
+        .lb-tab:hover:not(.active) { color:rgba(255,255,255,0.7); }
+        .leaderboard-table { width:100%; border-collapse:collapse; }
+        .leaderboard-table th { text-align:left; padding:12px 16px; font-size:11px; letter-spacing:2px; color:rgba(255,255,255,0.3); text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,0.08); }
+        .leaderboard-table td { padding:16px; border-bottom:1px solid rgba(255,255,255,0.05); font-size:14px; color:rgba(255,255,255,0.85); }
+        .lb-row:hover td { background:rgba(255,255,255,0.03); }
+        .lb-row.is-me td { background:rgba(92,179,224,0.06); }
+        .lb-row.is-me td { color:#fff; }
+        .lb-rank { font-size:18px; font-weight:700; color:rgba(255,255,255,0.3); width:60px; }
+        .lb-rank.gold { color:#f0c040; }
+        .lb-rank.silver { color:#b0b8c8; }
+        .lb-rank.bronze { color:#cd7f32; }
+        .lb-username { font-weight:700; font-size:15px; }
+        .lb-username .you-badge { font-size:10px; background:rgba(92,179,224,0.2); border:1px solid rgba(92,179,224,0.4); color:#5cb3e0; padding:2px 8px; border-radius:2px; margin-left:10px; letter-spacing:1px; vertical-align:middle; }
+        .lb-value { font-weight:700; color:#f0c040; }
+        .lb-best-item { font-size:12px; color:rgba(255,255,255,0.5); }
+        .lb-best-item.covert { color:#eb4b4b; }
+        .lb-best-item.classified { color:#d32ce6; }
+        .lb-best-item.restricted { color:#8847ff; }
+        .lb-loading { text-align:center; padding:60px; color:rgba(255,255,255,0.3); font-size:14px; letter-spacing:2px; }
+        .lb-refresh-btn { padding:10px 24px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; float:right; margin-bottom:20px; }
+        .lb-refresh-btn:hover { background:rgba(255,255,255,0.12); color:#fff; }
+        .sync-indicator { position:fixed; bottom:20px; right:20px; background:rgba(20,18,15,0.95); border:1px solid rgba(92,179,224,0.3); color:#5cb3e0; padding:8px 16px; font-size:12px; font-weight:700; letter-spacing:1px; z-index:9999; pointer-events:none; opacity:0; transition:opacity 0.3s; }
+        .sync-indicator.visible { opacity:1; }
         @media (max-width: 768px) { .main-nav { gap: 20px; } .inventory-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } }
     </style>
 </head>
@@ -331,6 +372,7 @@
 <div class="main-nav">
     <div class="main-nav-item active" data-nav="inventory">INVENTORY</div>
     <div class="main-nav-item" data-nav="store">STORE</div>
+    <div class="main-nav-item" data-nav="leaderboard">LEADERBOARD</div>
     <div class="main-nav-item" data-nav="news">NEWS</div>
     <div class="main-nav-item" data-nav="info">INFO</div>
 </div>
@@ -382,6 +424,41 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Username Setup Modal -->
+<div class="username-modal" id="usernameModal">
+    <div class="username-modal-box">
+        <div class="username-modal-title">WELCOME TO CASE GAMBLE</div>
+        <div class="username-modal-sub">ENTER A USERNAME TO APPEAR ON THE LEADERBOARD</div>
+        <input class="username-input" id="usernameInput" type="text" maxlength="20" placeholder="YOUR NAME..." autocomplete="off">
+        <br>
+        <button class="username-confirm-btn" id="usernameConfirmBtn">CONFIRM</button>
+    </div>
+</div>
+
+<!-- Sync Indicator -->
+<div class="sync-indicator" id="syncIndicator">SYNCING...</div>
+
+<!-- Leaderboard Tab -->
+<div class="tab-content" id="leaderboardTab">
+    <div class="leaderboard-container">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+            <div>
+                <div class="leaderboard-title">Leaderboard</div>
+                <div class="leaderboard-sub">UPDATED IN REAL TIME · TOP 50 PLAYERS</div>
+            </div>
+            <button class="lb-refresh-btn" id="lbRefreshBtn">↻ REFRESH</button>
+        </div>
+        <div class="leaderboard-tabs">
+            <div class="lb-tab active" data-lb="balance">MOST MONEY</div>
+            <div class="lb-tab" data-lb="cases_opened">MOST CASES</div>
+        </div>
+        <div id="lbTableWrap">
+            <div class="lb-loading">LOADING...</div>
         </div>
     </div>
 </div>
@@ -487,6 +564,54 @@
 
 <script>
 // ========================================
+// SUPABASE CONFIG
+// ========================================
+const SUPABASE_URL = 'https://qmbtyjhwddepjzsondwh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_hzAtNs73pe4h3KRbq0kCKA_4yqvN2t2';
+
+async function sbFetch(path, method = 'GET', body = null, extra = {}) {
+    const opts = {
+        method,
+        headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': method === 'POST' ? 'resolution=merge-duplicates,return=minimal' : 'return=minimal',
+            ...extra
+        }
+    };
+    if (body) opts.body = JSON.stringify(body);
+    const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, opts);
+    if (res.status === 204 || res.status === 201) return null;
+    return res.json();
+}
+
+// ========================================
+// PLAYER ID & USERNAME
+// ========================================
+let playerId = localStorage.getItem('playerId');
+if (!playerId) { playerId = 'p_' + Math.random().toString(36).substr(2,12) + Date.now().toString(36); localStorage.setItem('playerId', playerId); }
+
+let playerUsername = localStorage.getItem('playerUsername') || null;
+
+function showUsernameModal() {
+    document.getElementById('usernameModal').classList.add('active');
+    document.getElementById('usernameInput').focus();
+}
+
+document.getElementById('usernameConfirmBtn').addEventListener('click', confirmUsername);
+document.getElementById('usernameInput').addEventListener('keydown', e => { if (e.key === 'Enter') confirmUsername(); });
+
+async function confirmUsername() {
+    const val = document.getElementById('usernameInput').value.trim();
+    if (!val || val.length < 2) { document.getElementById('usernameInput').style.borderColor='#eb4b4b'; return; }
+    playerUsername = val;
+    localStorage.setItem('playerUsername', playerUsername);
+    document.getElementById('usernameModal').classList.remove('active');
+    await syncToSupabase();
+}
+
+// ========================================
 // CURRENCY SYSTEM
 // ========================================
 const SELL_VALUES = {
@@ -500,6 +625,9 @@ const SELL_VALUES = {
 };
 
 let playerBalance = parseFloat(localStorage.getItem('playerBalance')) || 0;
+let casesOpened = parseInt(localStorage.getItem('casesOpened')) || 0;
+let bestItem = localStorage.getItem('bestItem') || null;
+let bestItemRarity = localStorage.getItem('bestItemRarity') || null;
 
 function saveBalance() { localStorage.setItem('playerBalance', playerBalance.toFixed(2)); }
 
@@ -514,11 +642,23 @@ function addCurrency(amount) {
     updateBalanceDisplay();
 }
 
+function trackBestItem(item) {
+    const rarityRank = { 'covert': 0, 'classified': 1, 'restricted': 2, 'mil-spec': 3, 'consumer-grade': 99, 'industrial-grade': 99 };
+    const currentRank = rarityRank[bestItemRarity] ?? 99;
+    const newRank = rarityRank[item.rarity] ?? 99;
+    if (newRank < currentRank) {
+        bestItem = item.name;
+        bestItemRarity = item.rarity;
+        localStorage.setItem('bestItem', bestItem);
+        localStorage.setItem('bestItemRarity', bestItemRarity);
+    }
+}
+
 function showCoinPopup(amount) {
     document.querySelectorAll('.coin-popup').forEach(el => el.remove());
     const popup = document.createElement('div');
     popup.className = 'coin-popup';
-    popup.textContent = `+${amount.toFixed(2)} $`;
+    popup.textContent = '+' + amount.toFixed(2) + ' $';
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 1900);
 }
@@ -526,6 +666,41 @@ function showCoinPopup(amount) {
 function getSellValue(item) { return SELL_VALUES[item.rarity] || 0; }
 
 updateBalanceDisplay();
+
+// ========================================
+// SYNC TO SUPABASE
+// ========================================
+let syncTimeout = null;
+function scheduleSyncToSupabase() {
+    clearTimeout(syncTimeout);
+    syncTimeout = setTimeout(syncToSupabase, 2000);
+}
+
+async function syncToSupabase() {
+    if (!playerUsername) return;
+    const indicator = document.getElementById('syncIndicator');
+    indicator.classList.add('visible');
+    try {
+        await sbFetch('players', 'POST', {
+            id: playerId,
+            username: playerUsername,
+            balance: parseFloat(playerBalance.toFixed(2)),
+            cases_opened: casesOpened,
+            best_item: bestItem,
+            best_item_rarity: bestItemRarity,
+            updated_at: new Date().toISOString()
+        });
+    } catch(e) { console.warn('Sync failed:', e); }
+    setTimeout(() => indicator.classList.remove('visible'), 1200);
+}
+
+// ========================================
+// INIT: check if user needs username
+// ========================================
+window.addEventListener('load', () => {
+    if (!playerUsername) showUsernameModal();
+    else syncToSupabase();
+});
 
 // ========================================
 const availableCases = [
@@ -633,31 +808,31 @@ function renderInventory() {
 
 function createInventoryCard(item, index, isDeletable) {
     const card = document.createElement('div');
-    card.className = `item-card ${item.rarity}`;
+    card.className = 'item-card ' + item.rarity;
     const styles = [];
     if (item.imageScale || item.offsetX || item.offsetY) {
         const t = [];
-        if (item.imageScale) t.push(`scale(${item.imageScale})`);
-        if (item.offsetX || item.offsetY) t.push(`translate(${item.offsetX||0}px, ${item.offsetY||0}px)`);
-        styles.push(`transform: ${t.join(' ')}`);
+        if (item.imageScale) t.push('scale(' + item.imageScale + ')');
+        if (item.offsetX || item.offsetY) t.push('translate(' + (item.offsetX||0) + 'px, ' + (item.offsetY||0) + 'px)');
+        styles.push('transform: ' + t.join(' '));
     }
-    if (item.brightness) styles.push(`filter: brightness(${item.brightness})`);
-    const imageStyle = styles.length > 0 ? `style="${styles.join('; ')};"` : '';
+    if (item.brightness) styles.push('filter: brightness(' + item.brightness + ')');
+    const imageStyle = styles.length > 0 ? 'style="' + styles.join('; ') + ';"' : '';
     const isCase = item.type === 'Case';
     const imagePath = getItemImagePath(item);
     const nameParts = item.name.split(' | ');
     const weaponLabel = nameParts[0];
     const skinLabel = nameParts.length > 1 ? nameParts.slice(1).join(' | ') : '';
-    card.innerHTML = `
-        <div class="item-image-container${isCase ? ' case-item' : ''}">
-            <img src="${imagePath}" alt="${item.name}" class="item-image" ${imageStyle}>
-        </div>
-        <div class="item-info">
-            <div class="item-name">${weaponLabel}</div>
-            ${skinLabel ? `<div class="item-skin">${skinLabel}</div>` : ''}
-        </div>`;
+    card.innerHTML =
+        '<div class="item-image-container' + (isCase ? ' case-item' : '') + '">' +
+        '<img src="' + imagePath + '" alt="' + item.name + '" class="item-image" ' + imageStyle + '>' +
+        '</div>' +
+        '<div class="item-info">' +
+        '<div class="item-name">' + weaponLabel + '</div>' +
+        (skinLabel ? '<div class="item-skin">' + skinLabel + '</div>' : '') +
+        '</div>';
     card.addEventListener('click', () => openInspectModal(item, isDeletable));
-    card.itemData = { ...item, originalIndex: index, isDeletable };
+    card.itemData = Object.assign({}, item, { originalIndex: index, isDeletable: isDeletable });
     return card;
 }
 
@@ -693,45 +868,42 @@ const modal = document.getElementById('inspectModal');
 const closeBtn = document.getElementById('closeModal');
 let currentModalItem = null;
 
-function openInspectModal(item, isDeletable = false) {
+function openInspectModal(item, isDeletable) {
+    if (isDeletable === undefined) isDeletable = false;
     currentModalItem = item;
     const rarityText = item.rarity === 'consumer-grade' ? 'STANDARD' : (item.rarity || 'special').toUpperCase().replace(/-/g, ' ');
-    // Only covert knives/gloves get a ★ prefix (already in name), everything else plain
     document.getElementById('modalWeaponName').textContent = item.name;
     if (item.rarity === 'covert' && (item.type === 'Knife' || item.type === 'Gloves')) {
-        document.getElementById('modalRarity').textContent = `★ COVERT ★`;
+        document.getElementById('modalRarity').textContent = '★ COVERT ★';
     } else if (item.rarity === 'covert') {
-        document.getElementById('modalRarity').textContent = `★ ${rarityText} ★`;
+        document.getElementById('modalRarity').textContent = '★ ' + rarityText + ' ★';
     } else {
         document.getElementById('modalRarity').textContent = rarityText;
     }
     const modalDisplay = document.getElementById('modalWeaponEmoji');
     const modalStyles = [], transforms = [];
     if (item.type === 'Knife' || item.type === 'Gloves') transforms.push('scale(2)');
-    else if (item.imageScale) transforms.push(`scale(${item.imageScale})`);
-    if (item.offsetX || item.offsetY) transforms.push(`translate(${item.offsetX||0}px, ${item.offsetY||0}px)`);
-    if (transforms.length > 0) modalStyles.push(`transform: ${transforms.join(' ')}`);
-    if (item.brightness) modalStyles.push(`filter: brightness(${item.brightness})`);
+    else if (item.imageScale) transforms.push('scale(' + item.imageScale + ')');
+    if (item.offsetX || item.offsetY) transforms.push('translate(' + (item.offsetX||0) + 'px, ' + (item.offsetY||0) + 'px)');
+    if (transforms.length > 0) modalStyles.push('transform: ' + transforms.join(' '));
+    if (item.brightness) modalStyles.push('filter: brightness(' + item.brightness + ')');
     const isCase = item.type === 'Case';
     const imagePath = getItemImagePath(item);
     const modalStyleStr = modalStyles.length > 0 ? modalStyles.join('; ') + ';' : '';
     const modalSize = isCase ? '90%' : '70%';
-    modalDisplay.innerHTML = `<img src="${imagePath}" alt="${item.name}" style="max-width:${modalSize};max-height:${modalSize};object-fit:contain;display:block;margin:auto;${modalStyleStr}">`;
-    document.getElementById('modalRarityBar').className = `rarity-bar ${item.rarity || 'covert'}`;
+    modalDisplay.innerHTML = '<img src="' + imagePath + '" alt="' + item.name + '" style="max-width:' + modalSize + ';max-height:' + modalSize + ';object-fit:contain;display:block;margin:auto;' + modalStyleStr + '">';
+    document.getElementById('modalRarityBar').className = 'rarity-bar ' + (item.rarity || 'covert');
     document.getElementById('deleteModal').style.display = isDeletable ? 'flex' : 'none';
     document.getElementById('unlockCaseBtn').style.display = (item.type === 'Case' && isDeletable) ? 'block' : 'none';
-
-    // Sell button — only for won skins (isDeletable, not a Case, has sell value)
     const sellBtn = document.getElementById('sellItemBtn');
     const sellAmount = getSellValue(item);
     const isWonSkin = isDeletable && item.type !== 'Case';
     if (isWonSkin && sellAmount > 0) {
         sellBtn.style.display = 'block';
-        sellBtn.textContent = `SELL  $ ${sellAmount.toFixed(2)}`;
+        sellBtn.textContent = 'SELL  $ ' + sellAmount.toFixed(2);
     } else {
         sellBtn.style.display = 'none';
     }
-
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -742,11 +914,10 @@ closeBtn.addEventListener('click', closeInspectModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeInspectModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeInspectModal(); });
 
-// Sell from modal
 document.getElementById('sellItemBtn').addEventListener('click', () => {
     if (!currentModalItem) return;
     document.getElementById('sellConfirmItemName').textContent = currentModalItem.name;
-    document.getElementById('sellConfirmPrice').textContent = `$ ${getSellValue(currentModalItem).toFixed(2)}`;
+    document.getElementById('sellConfirmPrice').textContent = '$ ' + getSellValue(currentModalItem).toFixed(2);
     document.getElementById('sellConfirmDialog').classList.add('active');
 });
 document.getElementById('sellConfirmNo').addEventListener('click', () => document.getElementById('sellConfirmDialog').classList.remove('active'));
@@ -762,6 +933,7 @@ document.getElementById('sellConfirmYes').addEventListener('click', () => {
     if (currentSort !== 'newest') sortInventory(currentSort);
     document.getElementById('sellConfirmDialog').classList.remove('active');
     closeInspectModal();
+    scheduleSyncToSupabase();
 });
 
 function extractDominantColor(imgElement, callback) {
@@ -772,7 +944,7 @@ function extractDominantColor(imgElement, callback) {
         const d = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
         let r=0, g=0, b=0, count=0;
         for (let i=0; i<d.length; i+=4) { if (d[i+3]>50 && (d[i]+d[i+1]+d[i+2])>100) { r+=d[i]; g+=d[i+1]; b+=d[i+2]; count++; } }
-        if (count>0) callback(`rgba(${Math.floor(r/count)},${Math.floor(g/count)},${Math.floor(b/count)},0.35)`);
+        if (count>0) callback('rgba(' + Math.floor(r/count) + ',' + Math.floor(g/count) + ',' + Math.floor(b/count) + ',0.35)');
         else callback('rgba(220,140,60,0.35)');
     };
     img.onerror = () => callback('rgba(220,140,60,0.35)');
@@ -786,7 +958,7 @@ document.querySelectorAll('.case-card').forEach(card => {
 function showCaseDetails(caseId) {
     const caseData = availableCases.find(c => c.id === caseId);
     if (!caseData) return;
-    document.getElementById('caseDetailsImage').innerHTML = `<img src="images/${caseData.imageName}" alt="${caseData.name}">`;
+    document.getElementById('caseDetailsImage').innerHTML = '<img src="images/' + caseData.imageName + '" alt="' + caseData.name + '">';
     document.getElementById('caseDetailsName').textContent = caseData.name;
     document.getElementById('caseDetailsPrice').textContent = 'Free';
     const lootPool = caseLootPools[caseId] || caseLootPools['snakebite'];
@@ -799,13 +971,13 @@ function showCaseDetails(caseId) {
         const items = itemsByRarity[rarity];
         if (!items.length) return;
         const groupDiv = document.createElement('div'); groupDiv.className = 'rarity-group';
-        const headerDiv = document.createElement('div'); headerDiv.className = `rarity-group-header ${rarity}`; headerDiv.textContent = rarityNames[rarity];
+        const headerDiv = document.createElement('div'); headerDiv.className = 'rarity-group-header ' + rarity; headerDiv.textContent = rarityNames[rarity];
         groupDiv.appendChild(headerDiv);
         const gridDiv = document.createElement('div'); gridDiv.className = 'case-details-items-grid';
         items.forEach(item => {
-            const itemDiv = document.createElement('div'); itemDiv.className = `case-details-item ${rarity}`;
-            const imageStyle = item.brightness ? `style="filter: brightness(${item.brightness})"` : '';
-            itemDiv.innerHTML = `<div class="case-details-item-image"><img src="${getItemImagePath(item)}" alt="${item.name}" ${imageStyle}></div><div class="case-details-item-name">${item.name}</div>`;
+            const itemDiv = document.createElement('div'); itemDiv.className = 'case-details-item ' + rarity;
+            const imageStyle = item.brightness ? 'style="filter: brightness(' + item.brightness + ')"' : '';
+            itemDiv.innerHTML = '<div class="case-details-item-image"><img src="' + getItemImagePath(item) + '" alt="' + item.name + '" ' + imageStyle + '></div><div class="case-details-item-name">' + item.name + '</div>';
             gridDiv.appendChild(itemDiv);
         });
         groupDiv.appendChild(gridDiv); itemsContainer.appendChild(groupDiv);
@@ -862,8 +1034,70 @@ mainNavItems.forEach(item => {
         const targetTab = document.getElementById(tabName + 'Tab');
         if (targetTab) targetTab.classList.add('active');
         subNav.classList.toggle('active', tabName === 'inventory');
+        if (tabName === 'leaderboard') loadLeaderboard(currentLbMode);
     });
 });
+
+// ========================================
+// LEADERBOARD
+// ========================================
+let currentLbMode = 'balance';
+
+document.querySelectorAll('.lb-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        currentLbMode = this.dataset.lb;
+        loadLeaderboard(currentLbMode);
+    });
+});
+
+document.getElementById('lbRefreshBtn').addEventListener('click', () => loadLeaderboard(currentLbMode));
+
+async function loadLeaderboard(mode) {
+    const wrap = document.getElementById('lbTableWrap');
+    wrap.innerHTML = '<div class="lb-loading">LOADING...</div>';
+    try {
+        const orderCol = mode === 'balance' ? 'balance' : 'cases_opened';
+        const data = await sbFetch('players?select=*&order=' + orderCol + '.desc&limit=50', 'GET', null, { 'Prefer': 'return=representation' });
+        if (!data || data.length === 0) {
+            wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>';
+            return;
+        }
+        let html = '<table class="leaderboard-table"><thead><tr>' +
+            '<th>#</th><th>PLAYER</th>';
+        if (mode === 'balance') html += '<th>BALANCE</th><th>BEST ITEM</th>';
+        else html += '<th>CASES OPENED</th><th>BEST ITEM</th>';
+        html += '</tr></thead><tbody>';
+
+        data.forEach((row, i) => {
+            const rank = i + 1;
+            const isMe = row.id === playerId;
+            const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+            const rankDisplay = rank <= 3 ? ['🥇','🥈','🥉'][rank-1] : rank;
+            const bestItemClass = row.best_item_rarity ? ' ' + row.best_item_rarity : '';
+            html += '<tr class="lb-row' + (isMe ? ' is-me' : '') + '">' +
+                '<td class="lb-rank ' + rankClass + '">' + rankDisplay + '</td>' +
+                '<td class="lb-username">' + escapeHtml(row.username || 'Anonymous') + (isMe ? '<span class="you-badge">YOU</span>' : '') + '</td>';
+            if (mode === 'balance') {
+                html += '<td class="lb-value">$ ' + (parseFloat(row.balance) || 0).toFixed(2) + '</td>';
+            } else {
+                html += '<td class="lb-value">' + (row.cases_opened || 0) + '</td>';
+            }
+            html += '<td class="lb-best-item' + bestItemClass + '">' + (row.best_item ? escapeHtml(row.best_item) : '—') + '</td>';
+            html += '</tr>';
+        });
+        html += '</tbody></table>';
+        wrap.innerHTML = html;
+    } catch(e) {
+        wrap.innerHTML = '<div class="lb-loading">ERROR LOADING — CHECK CONNECTION</div>';
+        console.error(e);
+    }
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
 // ========================================
 // CASE LOOT POOL
@@ -933,16 +1167,16 @@ const caseLootPools = {
 };
 
 function getItemImagePath(item) {
-    if (item.type === 'Case') return `images/${item.imageName}`;
-    if (item.skinImageName) return `images/weapons/skins/${item.skinImageName}`;
-    return `images/weapons/${item.imageName}`;
+    if (item.type === 'Case') return 'images/' + item.imageName;
+    if (item.skinImageName) return 'images/weapons/skins/' + item.skinImageName;
+    return 'images/weapons/' + item.imageName;
 }
 
 function selectRandomItem(lootPool) {
     const totalWeight = lootPool.reduce((sum, item) => sum + item.weight, 0);
     let random = Math.random() * totalWeight;
-    for (const item of lootPool) { random -= item.weight; if (random <= 0) return { ...item }; }
-    return { ...lootPool[0] };
+    for (const item of lootPool) { random -= item.weight; if (random <= 0) return Object.assign({}, item); }
+    return Object.assign({}, lootPool[0]);
 }
 
 function openCase(caseItem) {
@@ -952,24 +1186,24 @@ function openCase(caseItem) {
     const ITEM_WIDTH = 198, TOTAL_ITEMS = 60, WIN_INDEX = 45;
     const fillerPool = lootPool.filter(item => !(item.rarity === 'covert' && (item.type === 'Knife' || item.type === 'Gloves')));
     const items = [];
-    for (let i = 0; i < TOTAL_ITEMS; i++) items.push(i === WIN_INDEX ? { ...winningItem } : selectRandomItem(fillerPool));
+    for (let i = 0; i < TOTAL_ITEMS; i++) items.push(i === WIN_INDEX ? Object.assign({}, winningItem) : selectRandomItem(fillerPool));
     const overlay = document.getElementById('caseOpeningOverlay');
     const rollItemsContainer = document.getElementById('rollItems');
     overlay.classList.add('active');
     rollItemsContainer.innerHTML = '';
     items.forEach(item => {
         const itemEl = document.createElement('div');
-        itemEl.className = `roll-item ${item.rarity}`;
+        itemEl.className = 'roll-item ' + item.rarity;
         const isGold = item.rarity === 'covert' && (item.type === 'Knife' || item.type === 'Gloves');
         const imagePath = isGold ? 'images/gold.webp' : getItemImagePath(item);
-        const imageStyle = (!isGold && item.brightness) ? `style="filter: brightness(${item.brightness})"` : '';
-        itemEl.innerHTML = `<div class="roll-item-image"><img src="${imagePath}" alt="${item.name}" ${imageStyle}></div><div class="roll-item-name">${item.name}</div>`;
+        const imageStyle = (!isGold && item.brightness) ? 'style="filter: brightness(' + item.brightness + ')"' : '';
+        itemEl.innerHTML = '<div class="roll-item-image"><img src="' + imagePath + '" alt="' + item.name + '" ' + imageStyle + '></div><div class="roll-item-name">' + item.name + '</div>';
         rollItemsContainer.appendChild(itemEl);
     });
     const jitter = (Math.random() - 0.5) * 80;
     const targetX = window.innerWidth / 2 - (WIN_INDEX * ITEM_WIDTH + 95) + jitter;
     rollItemsContainer.style.transition = 'none';
-    rollItemsContainer.style.transform = `translateX(${window.innerWidth / 2 - 95}px)`;
+    rollItemsContainer.style.transform = 'translateX(' + (window.innerWidth / 2 - 95) + 'px)';
     rollItemsContainer.getBoundingClientRect();
     let animationDone = false;
     const finishOpening = () => {
@@ -979,7 +1213,7 @@ function openCase(caseItem) {
     };
     setTimeout(() => {
         rollItemsContainer.style.transition = 'transform 6s cubic-bezier(0.15, 0.0, 0.1, 1.0)';
-        rollItemsContainer.style.transform = `translateX(${targetX}px)`;
+        rollItemsContainer.style.transform = 'translateX(' + targetX + 'px)';
     }, 50);
     const skipBtn = document.getElementById('skipOpeningBtn');
     skipBtn.style.animation = 'none'; skipBtn.style.opacity = '0';
@@ -987,6 +1221,10 @@ function openCase(caseItem) {
     skipBtn.style.animation = 'fadeInDelay 0.3s ease 1.5s forwards';
     skipBtn.onclick = finishOpening;
     setTimeout(finishOpening, 6500);
+
+    // Track cases opened
+    casesOpened++;
+    localStorage.setItem('casesOpened', casesOpened);
 }
 
 let pendingWinItem = null, pendingWonItemId = null;
@@ -994,22 +1232,22 @@ let pendingWinItem = null, pendingWonItemId = null;
 function showWinReveal(item, openedCase) {
     const winOverlay = document.getElementById('winRevealOverlay');
     const rarityText = (item.rarity || 'special').toUpperCase().replace(/-/g, ' ');
-    document.getElementById('winRarity').textContent = item.rarity === 'covert' ? `★ ${rarityText} ★` : rarityText;
+    document.getElementById('winRarity').textContent = item.rarity === 'covert' ? ('★ ' + rarityText + ' ★') : rarityText;
     document.getElementById('winName').textContent = item.name;
     const sellAmount = getSellValue(item);
     const sellHint = document.getElementById('winSellHint');
     const winSellBtn = document.getElementById('winSellBtn');
     if (sellAmount > 0) {
-        sellHint.textContent = `Sell value: $ ${sellAmount.toFixed(2)}`;
+        sellHint.textContent = 'Sell value: $ ' + sellAmount.toFixed(2);
         sellHint.style.display = 'block';
         winSellBtn.style.display = 'inline-block';
-        winSellBtn.textContent = `SELL  $ ${sellAmount.toFixed(2)}`;
+        winSellBtn.textContent = 'SELL  $ ' + sellAmount.toFixed(2);
     } else {
         sellHint.style.display = 'none';
         winSellBtn.style.display = 'none';
     }
     const revealImagePath = (item.rarity === 'covert' && (item.type === 'Knife' || item.type === 'Gloves')) ? 'images/gold.webp' : getItemImagePath(item);
-    document.getElementById('winImage').innerHTML = `<img src="${revealImagePath}" alt="${item.name}" style="max-width:90%;max-height:90%;object-fit:contain;">`;
+    document.getElementById('winImage').innerHTML = '<img src="' + revealImagePath + '" alt="' + item.name + '" style="max-width:90%;max-height:90%;object-fit:contain;">';
     winOverlay.classList.add('active');
     const wonItem = { id: Date.now(), name: item.name, type: item.type, rarity: item.rarity, imageName: item.imageName };
     if (item.brightness) wonItem.brightness = item.brightness;
@@ -1023,6 +1261,8 @@ function showWinReveal(item, openedCase) {
     pendingWinItem = item; pendingWonItemId = wonItem.id;
     userCases = userCases.filter(c => c.id !== openedCase.id);
     localStorage.setItem('userCases', JSON.stringify(userCases));
+    trackBestItem(item);
+    scheduleSyncToSupabase();
     renderInventory();
     if (currentSort !== 'newest') sortInventory(currentSort);
     const caseTypeId = openedCase.caseTypeId || 'snakebite';
@@ -1042,6 +1282,7 @@ function showWinReveal(item, openedCase) {
             pendingWonItemId = null; pendingWinItem = null;
             renderInventory();
             if (currentSort !== 'newest') sortInventory(currentSort);
+            scheduleSyncToSupabase();
         }
         winOverlay.classList.remove('active');
         closeInspectModal();
