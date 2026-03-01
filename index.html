@@ -343,6 +343,83 @@
         .lb-refresh-btn:hover { background:rgba(255,255,255,0.12); color:#fff; }
         .sync-indicator { position:fixed; bottom:20px; right:20px; background:rgba(20,18,15,0.95); border:1px solid rgba(92,179,224,0.3); color:#5cb3e0; padding:8px 16px; font-size:12px; font-weight:700; letter-spacing:1px; z-index:9999; pointer-events:none; opacity:0; transition:opacity 0.3s; }
         .sync-indicator.visible { opacity:1; }
+
+        /* ====== LEADERBOARD FILTER ====== */
+        .lb-filter-bar { display:flex; gap:12px; margin-bottom:20px; align-items:center; }
+        .lb-search { flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:14px; font-weight:700; padding:10px 16px; letter-spacing:1px; outline:none; font-family:inherit; }
+        .lb-search:focus { border-color:#5cb3e0; }
+        .lb-search::placeholder { color:rgba(255,255,255,0.25); font-weight:400; }
+
+        /* ====== RENAME MODAL ====== */
+        .rename-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:9000; align-items:center; justify-content:center; }
+        .rename-modal.active { display:flex; }
+        .rename-modal-box { background:linear-gradient(180deg,rgba(42,37,32,0.98) 0%,rgba(26,22,18,0.98) 100%); border:1px solid rgba(255,255,255,0.15); padding:40px 50px; text-align:center; max-width:440px; width:90%; }
+        .rename-modal-title { font-size:20px; font-weight:700; color:#fff; letter-spacing:2px; margin-bottom:8px; }
+        .rename-modal-sub { font-size:12px; color:rgba(255,255,255,0.35); letter-spacing:1px; margin-bottom:24px; }
+        .rename-error { font-size:12px; color:#eb4b4b; letter-spacing:1px; margin-bottom:14px; min-height:16px; }
+        .rename-btn-row { display:flex; gap:10px; justify-content:center; margin-top:4px; }
+        .rename-cancel-btn { padding:12px 28px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; font-family:inherit; }
+        .rename-cancel-btn:hover { background:rgba(255,255,255,0.14); }
+
+        /* ====== SPEED SELL ====== */
+        .speed-sell-btn {
+            display:flex; align-items:center; gap:8px;
+            background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15);
+            border-radius:4px; padding:8px 14px; font-size:13px;
+            font-weight:700; color:rgba(255,255,255,0.45); cursor:pointer;
+            transition:all 0.2s; font-family:inherit; letter-spacing:1px; text-transform:uppercase;
+            position:relative;
+        }
+        .speed-sell-btn.unlocked { color:#f0c040; border-color:rgba(240,192,64,0.4); background:rgba(240,192,64,0.08); }
+        .speed-sell-btn:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.3); color:#fff; }
+        .speed-sell-btn.unlocked:hover { background:rgba(240,192,64,0.15); border-color:rgba(240,192,64,0.65); }
+        .speed-sell-lock { font-size:11px; }
+        .speed-sell-cost { font-size:10px; color:rgba(255,255,255,0.3); display:block; line-height:1; }
+        .speed-sell-btn.unlocked .speed-sell-cost { display:none; }
+
+        /* ====== SPEED SELL MENU ====== */
+        .speed-sell-menu {
+            display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.88); z-index:5000; align-items:center; justify-content:center;
+        }
+        .speed-sell-menu.active { display:flex; }
+        .speed-sell-menu-box {
+            background:linear-gradient(180deg,rgba(42,37,32,0.99) 0%,rgba(26,22,18,0.99) 100%);
+            border:1px solid rgba(240,192,64,0.25); padding:40px 50px; min-width:440px;
+            max-width:90vw; text-align:center;
+        }
+        .ss-menu-title { font-size:22px; font-weight:700; color:#f0c040; letter-spacing:3px; margin-bottom:6px; }
+        .ss-menu-sub { font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:1px; margin-bottom:10px; }
+        .ss-rarity-filter { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:28px; }
+        .ss-rarity-chip {
+            padding:6px 14px; font-size:11px; font-weight:700; letter-spacing:1px;
+            border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.4);
+            cursor:pointer; transition:all 0.2s; text-transform:uppercase;
+        }
+        .ss-rarity-chip.active { border-color:currentColor; }
+        .ss-rarity-chip.all { color:#fff; }
+        .ss-rarity-chip.all.active { border-color:#fff; background:rgba(255,255,255,0.1); }
+        .ss-rarity-chip.mil-spec { color:#4b69ff; }
+        .ss-rarity-chip.mil-spec.active { background:rgba(75,105,255,0.15); }
+        .ss-rarity-chip.restricted { color:#8847ff; }
+        .ss-rarity-chip.restricted.active { background:rgba(136,71,255,0.15); }
+        .ss-rarity-chip.classified { color:#d32ce6; }
+        .ss-rarity-chip.classified.active { background:rgba(211,44,230,0.15); }
+        .ss-rarity-chip.covert { color:#eb4b4b; }
+        .ss-rarity-chip.covert.active { background:rgba(235,75,75,0.15); }
+        .ss-menu-actions { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+        .ss-action-btn {
+            padding:16px 24px; font-size:13px; font-weight:700; letter-spacing:1.5px;
+            text-transform:uppercase; cursor:pointer; transition:all 0.2s; font-family:inherit;
+            border:1px solid rgba(240,192,64,0.3); background:rgba(240,192,64,0.08); color:#f0c040;
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .ss-action-btn:hover { background:rgba(240,192,64,0.18); border-color:rgba(240,192,64,0.6); }
+        .ss-action-btn:disabled { opacity:0.3; cursor:not-allowed; }
+        .ss-action-preview { font-size:11px; color:rgba(240,192,64,0.55); font-weight:400; letter-spacing:0; }
+        .ss-close-btn { padding:12px 36px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; font-family:inherit; }
+        .ss-close-btn:hover { background:rgba(255,255,255,0.13); color:#fff; }
+        .ss-result { font-size:13px; color:#4caf50; letter-spacing:1px; margin-bottom:16px; min-height:18px; }
         @media (max-width: 768px) { .main-nav { gap: 20px; } .inventory-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } }
     </style>
 </head>
@@ -359,6 +436,11 @@
     </div>
     <div class="site-title">Case<span> </span>Gamble</div>
     <div class="top-nav-right">
+        <button class="speed-sell-btn" id="speedSellNavBtn" title="Speed Sell">
+            <span class="speed-sell-lock" id="speedSellLockIcon">🔒</span>
+            <span id="speedSellLabel">SPEED SELL</span>
+            <span class="speed-sell-cost" id="speedSellCost">$ 50.00 to unlock</span>
+        </button>
         <div class="currency-display">
             <span id="currencyAmount">0.00</span>
             <span>$</span>
@@ -452,6 +534,9 @@
                 <div class="leaderboard-sub">UPDATED IN REAL TIME · TOP 50 PLAYERS</div>
             </div>
             <button class="lb-refresh-btn" id="lbRefreshBtn">↻ REFRESH</button>
+        </div>
+        <div class="lb-filter-bar">
+            <input class="lb-search" id="lbSearchInput" type="text" placeholder="SEARCH PLAYER..." maxlength="30" autocomplete="off">
         </div>
         <div class="leaderboard-tabs">
             <div class="lb-tab active" data-lb="balance">MOST MONEY</div>
@@ -1054,6 +1139,13 @@ document.querySelectorAll('.lb-tab').forEach(tab => {
 
 document.getElementById('lbRefreshBtn').addEventListener('click', () => loadLeaderboard(currentLbMode));
 
+// Leaderboard search filter
+document.addEventListener('input', e => {
+    if (e.target.id === 'lbSearchInput' && lbLastData.length) {
+        renderLeaderboardTable(lbLastData, currentLbMode);
+    }
+});
+
 async function loadLeaderboard(mode) {
     const wrap = document.getElementById('lbTableWrap');
     wrap.innerHTML = '<div class="lb-loading">LOADING...</div>';
@@ -1062,33 +1154,11 @@ async function loadLeaderboard(mode) {
         const data = await sbFetch('players?select=*&order=' + orderCol + '.desc&limit=50', 'GET', null, { 'Prefer': 'return=representation' });
         if (!data || data.length === 0) {
             wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>';
+            lbLastData = [];
             return;
         }
-        let html = '<table class="leaderboard-table"><thead><tr>' +
-            '<th>#</th><th>PLAYER</th>';
-        if (mode === 'balance') html += '<th>BALANCE</th><th>BEST ITEM</th>';
-        else html += '<th>CASES OPENED</th><th>BEST ITEM</th>';
-        html += '</tr></thead><tbody>';
-
-        data.forEach((row, i) => {
-            const rank = i + 1;
-            const isMe = row.id === playerId;
-            const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
-            const rankDisplay = rank <= 3 ? ['🥇','🥈','🥉'][rank-1] : rank;
-            const bestItemClass = row.best_item_rarity ? ' ' + row.best_item_rarity : '';
-            html += '<tr class="lb-row' + (isMe ? ' is-me' : '') + '">' +
-                '<td class="lb-rank ' + rankClass + '">' + rankDisplay + '</td>' +
-                '<td class="lb-username">' + escapeHtml(row.username || 'Anonymous') + (isMe ? '<span class="you-badge">YOU</span>' : '') + '</td>';
-            if (mode === 'balance') {
-                html += '<td class="lb-value">$ ' + (parseFloat(row.balance) || 0).toFixed(2) + '</td>';
-            } else {
-                html += '<td class="lb-value">' + (row.cases_opened || 0) + '</td>';
-            }
-            html += '<td class="lb-best-item' + bestItemClass + '">' + (row.best_item ? escapeHtml(row.best_item) : '—') + '</td>';
-            html += '</tr>';
-        });
-        html += '</tbody></table>';
-        wrap.innerHTML = html;
+        lbLastData = data;
+        renderLeaderboardTable(data, mode);
     } catch(e) {
         wrap.innerHTML = '<div class="lb-loading">ERROR LOADING — CHECK CONNECTION</div>';
         console.error(e);
@@ -1300,5 +1370,47 @@ document.getElementById('unlockCaseBtn').addEventListener('click', function() {
     }
 });
 </script>
+
+<!-- Rename Modal -->
+<div class="rename-modal" id="renameModal">
+    <div class="rename-modal-box">
+        <div class="rename-modal-title">CHANGE USERNAME</div>
+        <div class="rename-modal-sub">PICK A NEW NAME FOR THE LEADERBOARD</div>
+        <input class="username-input" id="renameInput" type="text" maxlength="20" placeholder="NEW NAME..." autocomplete="off">
+        <div class="rename-error" id="renameError"></div>
+        <div class="rename-btn-row">
+            <button class="rename-cancel-btn" id="renameCancelBtn">CANCEL</button>
+            <button class="username-confirm-btn" id="renameConfirmBtn">SAVE</button>
+        </div>
+    </div>
+</div>
+
+<!-- Speed Sell Menu -->
+<div class="speed-sell-menu" id="speedSellMenu">
+    <div class="speed-sell-menu-box">
+        <div class="ss-menu-title">⚡ SPEED SELL</div>
+        <div class="ss-menu-sub">SELECT RARITY FILTER THEN CHOOSE ACTION</div>
+        <div class="ss-rarity-filter">
+            <div class="ss-rarity-chip all active" data-rarity="all">ALL</div>
+            <div class="ss-rarity-chip mil-spec" data-rarity="mil-spec">MIL-SPEC</div>
+            <div class="ss-rarity-chip restricted" data-rarity="restricted">RESTRICTED</div>
+            <div class="ss-rarity-chip classified" data-rarity="classified">CLASSIFIED</div>
+            <div class="ss-rarity-chip covert" data-rarity="covert">COVERT</div>
+        </div>
+        <div class="ss-result" id="ssResult"></div>
+        <div class="ss-menu-actions">
+            <button class="ss-action-btn" id="ssSellAllBtn">
+                <span>SELL ALL</span>
+                <span class="ss-action-preview" id="ssSellAllPreview"></span>
+            </button>
+            <button class="ss-action-btn" id="ssSellAllButOneBtn">
+                <span>SELL ALL BUT 1 (PER TYPE)</span>
+                <span class="ss-action-preview" id="ssSellAllButOnePreview"></span>
+            </button>
+        </div>
+        <button class="ss-close-btn" id="ssCloseBtn">CLOSE</button>
+    </div>
+</div>
+
 </body>
 </html>
