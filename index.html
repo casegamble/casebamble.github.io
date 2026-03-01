@@ -773,6 +773,15 @@ async function syncToSupabase() {
     const indicator = document.getElementById('syncIndicator');
     indicator.classList.add('visible');
     try {
+        // Check if this row is admin-locked before overwriting
+        const existing = await sbFetch('players?select=locked&id=eq.' + encodeURIComponent(playerId), 'GET');
+        if (existing && existing.length > 0 && existing[0].locked) {
+            // Row is locked by admin — don't overwrite, just read their set values
+            const row = existing[0];
+            console.log('Row is admin-locked, skipping sync');
+            setTimeout(() => indicator.classList.remove('visible'), 1200);
+            return;
+        }
         await sbFetch('players', 'POST', {
             id: playerId,
             username: playerUsername,
@@ -780,6 +789,7 @@ async function syncToSupabase() {
             cases_opened: casesOpened,
             best_item: bestItem,
             best_item_rarity: bestItemRarity,
+            locked: false,
             updated_at: new Date().toISOString()
         });
     } catch(e) { console.warn('Sync failed:', e); }
@@ -815,10 +825,29 @@ window.addEventListener('load', async () => {
     }
     // Check if this player still exists in Supabase — if deleted, full reset
     try {
-        const result = await sbFetch('players?select=id&id=eq.' + encodeURIComponent(playerId), 'GET');
+        const result = await sbFetch('players?select=*&id=eq.' + encodeURIComponent(playerId), 'GET');
         if (result && result.length === 0) {
             hardReset();
             return;
+        }
+        // Use Supabase values as source of truth — so admin edits show instantly
+        if (result && result.length > 0) {
+            const row = result[0];
+            if (row.balance !== undefined && row.balance !== null) {
+                playerBalance = parseFloat(row.balance) || 0;
+                saveBalance();
+                updateBalanceDisplay();
+            }
+            if (row.cases_opened !== undefined && row.cases_opened !== null) {
+                casesOpened = parseInt(row.cases_opened) || 0;
+                localStorage.setItem('casesOpened', casesOpened);
+            }
+            if (row.best_item) {
+                bestItem = row.best_item;
+                bestItemRarity = row.best_item_rarity;
+                localStorage.setItem('bestItem', bestItem);
+                localStorage.setItem('bestItemRarity', bestItemRarity);
+            }
         }
     } catch(e) {
         // Offline — let them in normally
