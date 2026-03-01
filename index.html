@@ -1191,7 +1191,19 @@ async function loadLeaderboard(mode) {
     try {
         const orderCol = mode === 'balance' ? 'balance' : 'cases_opened';
         const data = await sbFetch('players?select=*&order=' + orderCol + '.desc&limit=50', 'GET');
-        if (!data || data.length === 0) {
+        console.log('Leaderboard data:', data);
+        // Handle error object from supabase (e.g. {message: '...', code: '...'})
+        if (!data) {
+            wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>';
+            lbLastData = [];
+            return;
+        }
+        if (!Array.isArray(data)) {
+            wrap.innerHTML = '<div class="lb-loading">ERROR: ' + (data.message || JSON.stringify(data)) + '</div>';
+            console.error('Unexpected response:', data);
+            return;
+        }
+        if (data.length === 0) {
             wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>';
             lbLastData = [];
             return;
