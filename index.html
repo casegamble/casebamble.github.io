@@ -302,8 +302,6 @@
         .rarity-group-header.covert { color: #eb4b4b; }
         .rarity-group-header.extraordinary { color: #e4ae39; }
         @media (max-width: 1200px) { .inventory-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); } }
-
-        /* ====== USERNAME SETUP MODAL ====== */
         .username-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.97); z-index:9000; align-items:center; justify-content:center; }
         .username-modal.active { display:flex; }
         .username-modal-box { background:linear-gradient(180deg,rgba(42,37,32,0.98) 0%,rgba(26,22,18,0.98) 100%); border:1px solid rgba(255,255,255,0.15); padding:50px 60px; text-align:center; max-width:500px; width:90%; }
@@ -313,7 +311,6 @@
         .username-input:focus { border-color:#5cb3e0; }
         .username-confirm-btn { padding:14px 50px; background:rgba(92,179,224,0.2); border:1px solid rgba(92,179,224,0.5); color:#5cb3e0; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:2px; cursor:pointer; transition:all 0.2s; }
         .username-confirm-btn:hover { background:rgba(92,179,224,0.3); border-color:rgba(92,179,224,0.8); }
-        /* ====== LEADERBOARD ====== */
         .leaderboard-container { padding:40px; max-width:1000px; margin:0 auto; }
         .leaderboard-title { font-size:28px; font-weight:700; color:#fff; letter-spacing:3px; text-transform:uppercase; margin-bottom:8px; }
         .leaderboard-sub { font-size:13px; color:rgba(255,255,255,0.4); letter-spacing:1px; margin-bottom:30px; }
@@ -325,8 +322,7 @@
         .leaderboard-table th { text-align:left; padding:12px 16px; font-size:11px; letter-spacing:2px; color:rgba(255,255,255,0.3); text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,0.08); }
         .leaderboard-table td { padding:16px; border-bottom:1px solid rgba(255,255,255,0.05); font-size:14px; color:rgba(255,255,255,0.85); }
         .lb-row:hover td { background:rgba(255,255,255,0.03); }
-        .lb-row.is-me td { background:rgba(92,179,224,0.06); }
-        .lb-row.is-me td { color:#fff; }
+        .lb-row.is-me td { background:rgba(92,179,224,0.06); color:#fff; }
         .lb-rank { font-size:18px; font-weight:700; color:rgba(255,255,255,0.3); width:60px; }
         .lb-rank.gold { color:#f0c040; }
         .lb-rank.silver { color:#b0b8c8; }
@@ -343,14 +339,10 @@
         .lb-refresh-btn:hover { background:rgba(255,255,255,0.12); color:#fff; }
         .sync-indicator { position:fixed; bottom:20px; right:20px; background:rgba(20,18,15,0.95); border:1px solid rgba(92,179,224,0.3); color:#5cb3e0; padding:8px 16px; font-size:12px; font-weight:700; letter-spacing:1px; z-index:9999; pointer-events:none; opacity:0; transition:opacity 0.3s; }
         .sync-indicator.visible { opacity:1; }
-
-        /* ====== LEADERBOARD FILTER ====== */
         .lb-filter-bar { display:flex; gap:12px; margin-bottom:20px; align-items:center; }
         .lb-search { flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:14px; font-weight:700; padding:10px 16px; letter-spacing:1px; outline:none; font-family:inherit; }
         .lb-search:focus { border-color:#5cb3e0; }
         .lb-search::placeholder { color:rgba(255,255,255,0.25); font-weight:400; }
-
-        /* ====== RENAME MODAL ====== */
         .rename-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:9000; align-items:center; justify-content:center; }
         .rename-modal.active { display:flex; }
         .rename-modal-box { background:linear-gradient(180deg,rgba(42,37,32,0.98) 0%,rgba(26,22,18,0.98) 100%); border:1px solid rgba(255,255,255,0.15); padding:40px 50px; text-align:center; max-width:440px; width:90%; }
@@ -360,42 +352,20 @@
         .rename-btn-row { display:flex; gap:10px; justify-content:center; margin-top:4px; }
         .rename-cancel-btn { padding:12px 28px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.6); font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; font-family:inherit; }
         .rename-cancel-btn:hover { background:rgba(255,255,255,0.14); }
-
-        /* ====== SPEED SELL ====== */
-        .speed-sell-btn {
-            display:flex; align-items:center; gap:8px;
-            background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15);
-            border-radius:4px; padding:8px 14px; font-size:13px;
-            font-weight:700; color:rgba(255,255,255,0.45); cursor:pointer;
-            transition:all 0.2s; font-family:inherit; letter-spacing:1px; text-transform:uppercase;
-            position:relative;
-        }
+        .speed-sell-btn { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:8px 14px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.45); cursor:pointer; transition:all 0.2s; font-family:inherit; letter-spacing:1px; text-transform:uppercase; position:relative; }
         .speed-sell-btn.unlocked { color:#f0c040; border-color:rgba(240,192,64,0.4); background:rgba(240,192,64,0.08); }
         .speed-sell-btn:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.3); color:#fff; }
         .speed-sell-btn.unlocked:hover { background:rgba(240,192,64,0.15); border-color:rgba(240,192,64,0.65); }
         .speed-sell-lock { font-size:11px; }
         .speed-sell-cost { font-size:10px; color:rgba(255,255,255,0.3); display:block; line-height:1; }
         .speed-sell-btn.unlocked .speed-sell-cost { display:none; }
-
-        /* ====== SPEED SELL MENU ====== */
-        .speed-sell-menu {
-            display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-            background:rgba(0,0,0,0.88); z-index:5000; align-items:center; justify-content:center;
-        }
+        .speed-sell-menu { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.88); z-index:5000; align-items:center; justify-content:center; }
         .speed-sell-menu.active { display:flex; }
-        .speed-sell-menu-box {
-            background:linear-gradient(180deg,rgba(42,37,32,0.99) 0%,rgba(26,22,18,0.99) 100%);
-            border:1px solid rgba(240,192,64,0.25); padding:40px 50px; min-width:440px;
-            max-width:90vw; text-align:center;
-        }
+        .speed-sell-menu-box { background:linear-gradient(180deg,rgba(42,37,32,0.99) 0%,rgba(26,22,18,0.99) 100%); border:1px solid rgba(240,192,64,0.25); padding:40px 50px; min-width:440px; max-width:90vw; text-align:center; }
         .ss-menu-title { font-size:22px; font-weight:700; color:#f0c040; letter-spacing:3px; margin-bottom:6px; }
         .ss-menu-sub { font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:1px; margin-bottom:10px; }
         .ss-rarity-filter { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:28px; }
-        .ss-rarity-chip {
-            padding:6px 14px; font-size:11px; font-weight:700; letter-spacing:1px;
-            border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.4);
-            cursor:pointer; transition:all 0.2s; text-transform:uppercase;
-        }
+        .ss-rarity-chip { padding:6px 14px; font-size:11px; font-weight:700; letter-spacing:1px; border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.4); cursor:pointer; transition:all 0.2s; text-transform:uppercase; }
         .ss-rarity-chip.active { border-color:currentColor; }
         .ss-rarity-chip.all { color:#fff; }
         .ss-rarity-chip.all.active { border-color:#fff; background:rgba(255,255,255,0.1); }
@@ -408,12 +378,7 @@
         .ss-rarity-chip.covert { color:#eb4b4b; }
         .ss-rarity-chip.covert.active { background:rgba(235,75,75,0.15); }
         .ss-menu-actions { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
-        .ss-action-btn {
-            padding:16px 24px; font-size:13px; font-weight:700; letter-spacing:1.5px;
-            text-transform:uppercase; cursor:pointer; transition:all 0.2s; font-family:inherit;
-            border:1px solid rgba(240,192,64,0.3); background:rgba(240,192,64,0.08); color:#f0c040;
-            display:flex; justify-content:space-between; align-items:center;
-        }
+        .ss-action-btn { padding:16px 24px; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; font-family:inherit; border:1px solid rgba(240,192,64,0.3); background:rgba(240,192,64,0.08); color:#f0c040; display:flex; justify-content:space-between; align-items:center; }
         .ss-action-btn:hover { background:rgba(240,192,64,0.18); border-color:rgba(240,192,64,0.6); }
         .ss-action-btn:disabled { opacity:0.3; cursor:not-allowed; }
         .ss-action-preview { font-size:11px; color:rgba(240,192,64,0.55); font-weight:400; letter-spacing:0; }
@@ -509,7 +474,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Username Setup Modal -->
 <div class="username-modal" id="usernameModal">
@@ -689,9 +653,6 @@
 </div>
 
 <script>
-// ========================================
-// SUPABASE CONFIG
-// ========================================
 const SUPABASE_URL = 'https://qmbtyjhwddepjzsondwh.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFtYnR5amh3ZGRlcGp6c29uZHdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzMDEwMjEsImV4cCI6MjA4Nzg3NzAyMX0.H_E2srRGsywrg60hICa93vzorUpk5Qf_OGjnVczHX9g';
 
@@ -701,39 +662,24 @@ async function sbFetch(path, method = 'GET', body = null, extra = {}) {
         'Authorization': 'Bearer ' + SUPABASE_KEY,
         'Content-Type': 'application/json',
     };
-    if (method === 'POST' || method === 'PATCH') {
-        headers['Prefer'] = 'resolution=merge-duplicates,return=minimal';
-    }
-    if (extra) {
-        Object.keys(extra).forEach(k => {
-            if (!(method === 'GET' && k === 'Prefer')) headers[k] = extra[k];
-        });
-    }
+    if (method === 'POST' || method === 'PATCH') headers['Prefer'] = 'resolution=merge-duplicates,return=minimal';
+    if (extra) Object.keys(extra).forEach(k => { if (!(method === 'GET' && k === 'Prefer')) headers[k] = extra[k]; });
     const opts = { method, headers };
     if (body) opts.body = JSON.stringify(body);
     const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, opts);
     if (res.status === 204 || res.status === 201) return null;
     const text = await res.text();
     if (!text) return null;
-    try { return JSON.parse(text); } catch(e) { console.error('Supabase parse error:', text); return null; }
+    try { return JSON.parse(text); } catch(e) { return null; }
 }
 
-// ========================================
-// PLAYER ID & USERNAME
-// ========================================
 let playerId = localStorage.getItem('playerId');
 if (!playerId) { playerId = 'p_' + Math.random().toString(36).substr(2,12) + Date.now().toString(36); localStorage.setItem('playerId', playerId); }
-
 let playerUsername = localStorage.getItem('playerUsername') || null;
 
-function showUsernameModal() {
-    document.getElementById('usernameModal').classList.add('active');
-    document.getElementById('usernameInput').focus();
-}
-
+function showUsernameModal() { document.getElementById('usernameModal').classList.add('active'); document.getElementById('usernameInput').focus(); }
 document.getElementById('usernameConfirmBtn').addEventListener('click', confirmUsername);
 document.getElementById('usernameInput').addEventListener('keydown', e => { if (e.key === 'Enter') confirmUsername(); });
-
 async function confirmUsername() {
     const val = document.getElementById('usernameInput').value.trim();
     if (!val || val.length < 2) { document.getElementById('usernameInput').style.borderColor='#eb4b4b'; return; }
@@ -743,153 +689,69 @@ async function confirmUsername() {
     await syncToSupabase();
 }
 
-// ========================================
-// CURRENCY SYSTEM
-// ========================================
-const SELL_VALUES = {
-    'mil-spec':         0.10,
-    'restricted':       0.50,
-    'classified':       1.50,
-    'covert':           5.00,
-    'extraordinary':   25.00,
-    'consumer-grade':   0.00,
-    'industrial-grade': 0.00
-};
-
+const SELL_VALUES = { 'mil-spec': 0.10, 'restricted': 0.50, 'classified': 1.50, 'covert': 5.00, 'extraordinary': 25.00, 'consumer-grade': 0.00, 'industrial-grade': 0.00 };
 let playerBalance = parseFloat(localStorage.getItem('playerBalance')) || 0;
 let casesOpened = parseInt(localStorage.getItem('casesOpened')) || 0;
 let bestItem = localStorage.getItem('bestItem') || null;
 let bestItemRarity = localStorage.getItem('bestItemRarity') || null;
 
 function saveBalance() { localStorage.setItem('playerBalance', playerBalance.toFixed(2)); }
-
-function updateBalanceDisplay() {
-    document.getElementById('currencyAmount').textContent = playerBalance.toFixed(2);
-}
-
-function addCurrency(amount) {
-    playerBalance += amount;
-    if (playerBalance < 0) playerBalance = 0;
-    saveBalance();
-    updateBalanceDisplay();
-}
-
+function updateBalanceDisplay() { document.getElementById('currencyAmount').textContent = playerBalance.toFixed(2); }
+function addCurrency(amount) { playerBalance += amount; if (playerBalance < 0) playerBalance = 0; saveBalance(); updateBalanceDisplay(); }
 function trackBestItem(item) {
     const rarityRank = { 'covert': 0, 'classified': 1, 'restricted': 2, 'mil-spec': 3, 'consumer-grade': 99, 'industrial-grade': 99 };
-    const currentRank = rarityRank[bestItemRarity] ?? 99;
-    const newRank = rarityRank[item.rarity] ?? 99;
-    if (newRank < currentRank) {
-        bestItem = item.name;
-        bestItemRarity = item.rarity;
-        localStorage.setItem('bestItem', bestItem);
-        localStorage.setItem('bestItemRarity', bestItemRarity);
+    if ((rarityRank[item.rarity] ?? 99) < (rarityRank[bestItemRarity] ?? 99)) {
+        bestItem = item.name; bestItemRarity = item.rarity;
+        localStorage.setItem('bestItem', bestItem); localStorage.setItem('bestItemRarity', bestItemRarity);
     }
 }
-
 function showCoinPopup(amount) {
     document.querySelectorAll('.coin-popup').forEach(el => el.remove());
-    const popup = document.createElement('div');
-    popup.className = 'coin-popup';
-    popup.textContent = '+' + amount.toFixed(2) + ' $';
-    document.body.appendChild(popup);
-    setTimeout(() => popup.remove(), 1900);
+    const popup = document.createElement('div'); popup.className = 'coin-popup'; popup.textContent = '+' + amount.toFixed(2) + ' $';
+    document.body.appendChild(popup); setTimeout(() => popup.remove(), 1900);
 }
-
 function getSellValue(item) { return SELL_VALUES[item.rarity] || 0; }
-
 updateBalanceDisplay();
 
-// ========================================
-// SYNC TO SUPABASE
-// ========================================
 let syncTimeout = null;
-function scheduleSyncToSupabase() {
-    clearTimeout(syncTimeout);
-    syncTimeout = setTimeout(syncToSupabase, 2000);
-}
-
+function scheduleSyncToSupabase() { clearTimeout(syncTimeout); syncTimeout = setTimeout(syncToSupabase, 2000); }
 async function syncToSupabase() {
     if (!playerUsername) return;
     const indicator = document.getElementById('syncIndicator');
     indicator.classList.add('visible');
     try {
         const existing = await sbFetch('players?select=locked&id=eq.' + encodeURIComponent(playerId), 'GET');
-        if (existing && existing.length > 0 && existing[0].locked) {
-            setTimeout(() => indicator.classList.remove('visible'), 1200);
-            return;
-        }
-        await sbFetch('players', 'POST', {
-            id: playerId,
-            username: playerUsername,
-            balance: parseFloat(playerBalance.toFixed(2)),
-            cases_opened: casesOpened,
-            best_item: bestItem,
-            best_item_rarity: bestItemRarity,
-            locked: false,
-            updated_at: new Date().toISOString()
-        });
+        if (existing && existing.length > 0 && existing[0].locked) { setTimeout(() => indicator.classList.remove('visible'), 1200); return; }
+        await sbFetch('players', 'POST', { id: playerId, username: playerUsername, balance: parseFloat(playerBalance.toFixed(2)), cases_opened: casesOpened, best_item: bestItem, best_item_rarity: bestItemRarity, locked: false, updated_at: new Date().toISOString() });
     } catch(e) { console.warn('Sync failed:', e); }
     setTimeout(() => indicator.classList.remove('visible'), 1200);
 }
 
-// ========================================
-// INIT
-// ========================================
 function hardReset() {
     localStorage.clear();
     playerId = 'p_' + Math.random().toString(36).substr(2,12) + Date.now().toString(36);
     localStorage.setItem('playerId', playerId);
-    playerUsername = null;
-    playerBalance = 0;
-    casesOpened = 0;
-    bestItem = null;
-    bestItemRarity = null;
-    userCases = [];
-    localStorage.setItem('userCases', JSON.stringify([]));
-    localStorage.setItem('userWins', JSON.stringify([]));
-    updateBalanceDisplay();
-    renderInventory();
-    showUsernameModal();
+    playerUsername = null; playerBalance = 0; casesOpened = 0; bestItem = null; bestItemRarity = null;
+    userCases = []; localStorage.setItem('userCases', JSON.stringify([])); localStorage.setItem('userWins', JSON.stringify([]));
+    updateBalanceDisplay(); renderInventory(); showUsernameModal();
 }
 
 window.addEventListener('load', async () => {
-    if (!playerUsername) {
-        showUsernameModal();
-        return;
-    }
+    if (!playerUsername) { showUsernameModal(); return; }
     try {
         const result = await sbFetch('players?select=*&id=eq.' + encodeURIComponent(playerId), 'GET');
-        if (result && result.length === 0) {
-            hardReset();
-            return;
-        }
+        if (result && result.length === 0) { hardReset(); return; }
         if (result && result.length > 0) {
             const row = result[0];
-            if (row.balance !== undefined && row.balance !== null) {
-                playerBalance = parseFloat(row.balance) || 0;
-                saveBalance();
-                updateBalanceDisplay();
-            }
-            if (row.cases_opened !== undefined && row.cases_opened !== null) {
-                casesOpened = parseInt(row.cases_opened) || 0;
-                localStorage.setItem('casesOpened', casesOpened);
-            }
-            if (row.best_item) {
-                bestItem = row.best_item;
-                bestItemRarity = row.best_item_rarity;
-                localStorage.setItem('bestItem', bestItem);
-                localStorage.setItem('bestItemRarity', bestItemRarity);
-            }
+            if (row.balance != null) { playerBalance = parseFloat(row.balance) || 0; saveBalance(); updateBalanceDisplay(); }
+            if (row.cases_opened != null) { casesOpened = parseInt(row.cases_opened) || 0; localStorage.setItem('casesOpened', casesOpened); }
+            if (row.best_item) { bestItem = row.best_item; bestItemRarity = row.best_item_rarity; localStorage.setItem('bestItem', bestItem); localStorage.setItem('bestItemRarity', bestItemRarity); }
         }
     } catch(e) {}
     syncToSupabase();
 });
 
-// ========================================
-const availableCases = [
-    { id: 'snakebite', name: 'Snakebite Case', imageName: 'snakebite.webp' }
-];
-
+const availableCases = [{ id: 'snakebite', name: 'Snakebite Case', imageName: 'snakebite.webp' }];
 let userCases = JSON.parse(localStorage.getItem('userCases')) || [];
 
 const defaultInventory = [
@@ -937,7 +799,6 @@ const inventoryGrid = document.getElementById('inventoryGrid');
 const sortLabel = document.getElementById('sortLabel');
 let currentSort = localStorage.getItem('sortPreference') || 'newest';
 let inventoryCards = [];
-
 const rarityOrder = { 'extraordinary': 0, 'covert': 1, 'classified': 2, 'restricted': 3, 'mil-spec': 4, 'industrial-grade': 5, 'consumer-grade': 6 };
 const gunTypeOrder = { 'Knife': 0, 'Gloves': 1, 'Sniper Rifle': 2, 'Rifle': 3, 'Shotgun': 4, 'Machine Gun': 5, 'SMG': 6, 'Pistol': 7 };
 
@@ -949,18 +810,18 @@ function sortInventory(sortType) {
         if (sortType === 'rarity-down') {
             if (itemA.type === 'Case' && itemB.type !== 'Case') return -1;
             if (itemB.type === 'Case' && itemA.type !== 'Case') return 1;
-            const rA = rarityOrder[itemA.rarity] ?? 99, rB = rarityOrder[itemB.rarity] ?? 99;
+            const rA = rarityOrder[itemA.rarity]??99, rB = rarityOrder[itemB.rarity]??99;
             if (rA !== rB) return rA - rB;
-            const tA = gunTypeOrder[itemA.type] ?? 99, tB = gunTypeOrder[itemB.type] ?? 99;
+            const tA = gunTypeOrder[itemA.type]??99, tB = gunTypeOrder[itemB.type]??99;
             if (tA !== tB) return tA - tB;
             return itemA.name.localeCompare(itemB.name);
         }
         if (sortType === 'rarity-up') {
             if (itemA.type === 'Case' && itemB.type !== 'Case') return 1;
             if (itemB.type === 'Case' && itemA.type !== 'Case') return -1;
-            const rA = rarityOrder[itemA.rarity] ?? 99, rB = rarityOrder[itemB.rarity] ?? 99;
+            const rA = rarityOrder[itemA.rarity]??99, rB = rarityOrder[itemB.rarity]??99;
             if (rA !== rB) return rB - rA;
-            const tA = gunTypeOrder[itemA.type] ?? 99, tB = gunTypeOrder[itemB.type] ?? 99;
+            const tA = gunTypeOrder[itemA.type]??99, tB = gunTypeOrder[itemB.type]??99;
             if (tA !== tB) return tB - tA;
             return itemA.name.localeCompare(itemB.name);
         }
@@ -971,22 +832,11 @@ function sortInventory(sortType) {
 }
 
 function renderInventory() {
-    inventoryGrid.innerHTML = '';
-    inventoryCards = [];
-    let index = 0;
-    defaultInventory.forEach(item => {
-        const card = createInventoryCard(item, index, false);
-        inventoryCards.push(card); inventoryGrid.appendChild(card); index++;
-    });
-    userCases.forEach(caseItem => {
-        const card = createInventoryCard(caseItem, index, true);
-        inventoryCards.push(card); inventoryGrid.appendChild(card); index++;
-    });
+    inventoryGrid.innerHTML = ''; inventoryCards = []; let index = 0;
+    defaultInventory.forEach(item => { const card = createInventoryCard(item, index, false); inventoryCards.push(card); inventoryGrid.appendChild(card); index++; });
+    userCases.forEach(caseItem => { const card = createInventoryCard(caseItem, index, true); inventoryCards.push(card); inventoryGrid.appendChild(card); index++; });
     let userWins = JSON.parse(localStorage.getItem('userWins')) || [];
-    userWins.forEach(winItem => {
-        const card = createInventoryCard(winItem, index, true);
-        inventoryCards.push(card); inventoryGrid.appendChild(card); index++;
-    });
+    userWins.forEach(winItem => { const card = createInventoryCard(winItem, index, true); inventoryCards.push(card); inventoryGrid.appendChild(card); index++; });
 }
 
 function createInventoryCard(item, index, isDeletable) {
@@ -1020,7 +870,6 @@ function createInventoryCard(item, index, isDeletable) {
 }
 
 renderInventory();
-
 if (currentSort !== 'newest') {
     sortInventory(currentSort);
     document.querySelectorAll('.sort-option').forEach(opt => {
@@ -1038,15 +887,11 @@ document.querySelectorAll('.sort-option').forEach(option => {
         e.stopPropagation();
         const sortType = option.dataset.sort;
         document.querySelectorAll('.sort-option').forEach(opt => opt.classList.remove('active'));
-        option.classList.add('active');
-        sortLabel.textContent = option.textContent;
-        sortInventory(sortType);
-        localStorage.setItem('sortPreference', sortType);
-        sortMenu.classList.remove('active');
+        option.classList.add('active'); sortLabel.textContent = option.textContent;
+        sortInventory(sortType); localStorage.setItem('sortPreference', sortType); sortMenu.classList.remove('active');
     });
 });
 
-// Modal
 const modal = document.getElementById('inspectModal');
 const closeBtn = document.getElementById('closeModal');
 let currentModalItem = null;
@@ -1081,18 +926,12 @@ function openInspectModal(item, isDeletable) {
     const sellBtn = document.getElementById('sellItemBtn');
     const sellAmount = getSellValue(item);
     const isWonSkin = isDeletable && item.type !== 'Case';
-    if (isWonSkin && sellAmount > 0) {
-        sellBtn.style.display = 'block';
-        sellBtn.textContent = 'SELL  $ ' + sellAmount.toFixed(2);
-    } else {
-        sellBtn.style.display = 'none';
-    }
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (isWonSkin && sellAmount > 0) { sellBtn.style.display = 'block'; sellBtn.textContent = 'SELL  $ ' + sellAmount.toFixed(2); }
+    else { sellBtn.style.display = 'none'; }
+    modal.classList.add('active'); document.body.style.overflow = 'hidden';
 }
 
 function closeInspectModal() { modal.classList.remove('active'); document.body.style.overflow = 'auto'; }
-
 closeBtn.addEventListener('click', closeInspectModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeInspectModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeInspectModal(); });
@@ -1110,13 +949,10 @@ document.getElementById('sellConfirmYes').addEventListener('click', () => {
     let wins = JSON.parse(localStorage.getItem('userWins')) || [];
     wins = wins.filter(w => w.id !== currentModalItem.id);
     localStorage.setItem('userWins', JSON.stringify(wins));
-    addCurrency(amount);
-    showCoinPopup(amount);
-    renderInventory();
+    addCurrency(amount); showCoinPopup(amount); renderInventory();
     if (currentSort !== 'newest') sortInventory(currentSort);
     document.getElementById('sellConfirmDialog').classList.remove('active');
-    closeInspectModal();
-    scheduleSyncToSupabase();
+    closeInspectModal(); scheduleSyncToSupabase();
 });
 
 function extractDominantColor(imgElement, callback) {
@@ -1127,12 +963,11 @@ function extractDominantColor(imgElement, callback) {
         const d = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
         let r=0, g=0, b=0, count=0;
         for (let i=0; i<d.length; i+=4) { if (d[i+3]>50 && (d[i]+d[i+1]+d[i+2])>100) { r+=d[i]; g+=d[i+1]; b+=d[i+2]; count++; } }
-        if (count>0) callback('rgba(' + Math.floor(r/count) + ',' + Math.floor(g/count) + ',' + Math.floor(b/count) + ',0.35)');
+        if (count>0) callback('rgba('+Math.floor(r/count)+','+Math.floor(g/count)+','+Math.floor(b/count)+',0.35)');
         else callback('rgba(220,140,60,0.35)');
     };
     img.onerror = () => callback('rgba(220,140,60,0.35)');
 }
-
 document.querySelectorAll('.case-card').forEach(card => {
     const img = card.querySelector('.case-image');
     if (img) extractDominantColor(img, color => card.style.setProperty('--glow-color', color));
@@ -1145,13 +980,29 @@ function showCaseDetails(caseId) {
     document.getElementById('caseDetailsName').textContent = caseData.name;
     document.getElementById('caseDetailsPrice').textContent = 'Free';
     const lootPool = caseLootPools[caseId] || caseLootPools['snakebite'];
-    const itemsByRarity = { 'extraordinary': [], 'covert': [], 'classified': [], 'restricted': [], 'mil-spec': [] };
-    lootPool.forEach(item => { if (!itemsByRarity[item.rarity].some(i => i.name === item.name)) itemsByRarity[item.rarity].push(item); });
+
+    // Build unique items per rarity — EXCLUDE knives, gloves show gold image
+    const itemsByRarity = { 'covert': [], 'classified': [], 'restricted': [], 'mil-spec': [] };
+    lootPool.forEach(item => {
+        if (item.type === 'Knife') return; // skip knives entirely
+        if (!itemsByRarity[item.rarity]) return;
+        if (!itemsByRarity[item.rarity].some(i => i.name === item.name)) {
+            itemsByRarity[item.rarity].push(item);
+        }
+    });
+
     const itemsContainer = document.getElementById('caseDetailsItemsContainer');
     itemsContainer.innerHTML = '';
-    const rarityNames = { 'extraordinary': '★ EXTRAORDINARY (KNIVES & GLOVES) ★', 'covert': 'COVERT', 'classified': 'CLASSIFIED', 'restricted': 'RESTRICTED', 'mil-spec': 'MIL-SPEC' };
-    Object.keys(itemsByRarity).forEach(rarity => {
-        const items = itemsByRarity[rarity];
+    const rarityNames = { 'covert': 'COVERT', 'classified': 'CLASSIFIED', 'restricted': 'RESTRICTED', 'mil-spec': 'MIL-SPEC' };
+
+    // Group gloves separately under a special header
+    const gloveItems = itemsByRarity['covert'].filter(i => i.type === 'Gloves');
+    const nonGloveCovert = itemsByRarity['covert'].filter(i => i.type !== 'Gloves');
+
+    // Render non-glove covert first
+    const allRarities = ['covert', 'classified', 'restricted', 'mil-spec'];
+    allRarities.forEach(rarity => {
+        const items = rarity === 'covert' ? nonGloveCovert : itemsByRarity[rarity];
         if (!items.length) return;
         const groupDiv = document.createElement('div'); groupDiv.className = 'rarity-group';
         const headerDiv = document.createElement('div'); headerDiv.className = 'rarity-group-header ' + rarity; headerDiv.textContent = rarityNames[rarity];
@@ -1159,12 +1010,29 @@ function showCaseDetails(caseId) {
         const gridDiv = document.createElement('div'); gridDiv.className = 'case-details-items-grid';
         items.forEach(item => {
             const itemDiv = document.createElement('div'); itemDiv.className = 'case-details-item ' + rarity;
-            const imageStyle = item.brightness ? 'style="filter: brightness(' + item.brightness + ')"' : '';
-            itemDiv.innerHTML = '<div class="case-details-item-image"><img src="' + getItemImagePath(item) + '" alt="' + item.name + '" ' + imageStyle + '></div><div class="case-details-item-name">' + item.name + '</div>';
+            // Use actual skin image for non-gloves
+            const displayImg = getItemImagePath(item);
+            itemDiv.innerHTML = '<div class="case-details-item-image"><img src="' + displayImg + '" alt="' + item.name + '"></div><div class="case-details-item-name">' + item.name + '</div>';
             gridDiv.appendChild(itemDiv);
         });
         groupDiv.appendChild(gridDiv); itemsContainer.appendChild(groupDiv);
     });
+
+    // Render gloves with gold image under special header
+    if (gloveItems.length) {
+        const groupDiv = document.createElement('div'); groupDiv.className = 'rarity-group';
+        const headerDiv = document.createElement('div'); headerDiv.className = 'rarity-group-header extraordinary'; headerDiv.textContent = '★ RARE SPECIAL ITEMS (GLOVES) ★';
+        groupDiv.appendChild(headerDiv);
+        const gridDiv = document.createElement('div'); gridDiv.className = 'case-details-items-grid';
+        gloveItems.forEach(item => {
+            const itemDiv = document.createElement('div'); itemDiv.className = 'case-details-item covert';
+            // Always show gold.webp for gloves in the preview
+            itemDiv.innerHTML = '<div class="case-details-item-image"><img src="images/gold.webp" alt="' + item.name + '"></div><div class="case-details-item-name">' + item.name + '</div>';
+            gridDiv.appendChild(itemDiv);
+        });
+        groupDiv.appendChild(gridDiv); itemsContainer.appendChild(groupDiv);
+    }
+
     document.getElementById('caseDetailsOverlay').classList.add('active');
     document.getElementById('caseDetailsBuyBtn').onclick = () => { buyCase(caseId); document.getElementById('caseDetailsOverlay').classList.remove('active'); };
 }
@@ -1174,8 +1042,7 @@ function buyCase(caseId) {
     if (caseData) {
         userCases.push({ id: Date.now(), name: caseData.name, type: 'Case', rarity: 'consumer-grade', imageName: caseData.imageName, caseTypeId: caseId });
         localStorage.setItem('userCases', JSON.stringify(userCases));
-        renderInventory();
-        if (currentSort !== 'newest') sortInventory(currentSort);
+        renderInventory(); if (currentSort !== 'newest') sortInventory(currentSort);
     }
 }
 
@@ -1200,10 +1067,8 @@ document.getElementById('confirmYes').addEventListener('click', function() {
         let wins = JSON.parse(localStorage.getItem('userWins')) || [];
         wins = wins.filter(w => w.id !== currentModalItem.id);
         localStorage.setItem('userWins', JSON.stringify(wins));
-        renderInventory();
-        if (currentSort !== 'newest') sortInventory(currentSort);
-        confirmDialog.classList.remove('active');
-        closeInspectModal();
+        renderInventory(); if (currentSort !== 'newest') sortInventory(currentSort);
+        confirmDialog.classList.remove('active'); closeInspectModal();
     }
 });
 
@@ -1221,40 +1086,27 @@ mainNavItems.forEach(item => {
     });
 });
 
-// ========================================
-// LEADERBOARD
-// ========================================
 let currentLbMode = 'balance';
 let lbLastData = [];
 
 document.querySelectorAll('.lb-tab').forEach(tab => {
     tab.addEventListener('click', function() {
         document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        currentLbMode = this.dataset.lb;
-        loadLeaderboard(currentLbMode);
+        this.classList.add('active'); currentLbMode = this.dataset.lb; loadLeaderboard(currentLbMode);
     });
 });
-
 document.getElementById('lbRefreshBtn').addEventListener('click', () => loadLeaderboard(currentLbMode));
-
-document.addEventListener('input', e => {
-    if (e.target.id === 'lbSearchInput' && lbLastData.length) {
-        renderLeaderboardTable(lbLastData, currentLbMode);
-    }
-});
+document.addEventListener('input', e => { if (e.target.id === 'lbSearchInput' && lbLastData.length) renderLeaderboardTable(lbLastData, currentLbMode); });
 
 function renderLeaderboardTable(data, mode) {
     const searchVal = document.getElementById('lbSearchInput') ? document.getElementById('lbSearchInput').value.toLowerCase() : '';
     const filtered = searchVal ? data.filter(r => (r.username || '').toLowerCase().includes(searchVal)) : data;
     const wrap = document.getElementById('lbTableWrap');
     if (!filtered.length) { wrap.innerHTML = '<div class="lb-loading">NO PLAYERS FOUND</div>'; return; }
-
     let html = '<table class="leaderboard-table"><thead><tr><th>#</th><th>PLAYER</th>';
     if (mode === 'balance') html += '<th>BALANCE</th><th>BEST ITEM</th>';
     else html += '<th>CASES OPENED</th><th>BEST ITEM</th>';
     html += '</tr></thead><tbody>';
-
     filtered.forEach(row => {
         const rank = data.indexOf(row) + 1;
         const isMe = row.id === playerId;
@@ -1264,13 +1116,9 @@ function renderLeaderboardTable(data, mode) {
         html += '<tr class="lb-row' + (isMe ? ' is-me' : '') + '">' +
             '<td class="lb-rank ' + rankClass + '">' + rankDisplay + '</td>' +
             '<td class="lb-username">' + escapeHtml(row.username || 'Anonymous') + (isMe ? '<span class="you-badge">YOU</span>' : '') + '</td>';
-        if (mode === 'balance') {
-            html += '<td class="lb-value">$ ' + (parseFloat(row.balance) || 0).toFixed(2) + '</td>';
-        } else {
-            html += '<td class="lb-value">' + (row.cases_opened || 0) + '</td>';
-        }
-        html += '<td class="lb-best-item' + bestItemClass + '">' + (row.best_item ? escapeHtml(row.best_item) : '—') + '</td>';
-        html += '</tr>';
+        if (mode === 'balance') html += '<td class="lb-value">$ ' + (parseFloat(row.balance)||0).toFixed(2) + '</td>';
+        else html += '<td class="lb-value">' + (row.cases_opened||0) + '</td>';
+        html += '<td class="lb-best-item' + bestItemClass + '">' + (row.best_item ? escapeHtml(row.best_item) : '—') + '</td></tr>';
     });
     html += '</tbody></table>';
     wrap.innerHTML = html;
@@ -1282,34 +1130,17 @@ async function loadLeaderboard(mode) {
     try {
         const orderCol = mode === 'balance' ? 'balance' : 'cases_opened';
         const data = await sbFetch('players?select=*&order=' + orderCol + '.desc&limit=50', 'GET');
-        if (!data) {
-            wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>';
-            lbLastData = [];
-            return;
-        }
-        if (!Array.isArray(data)) {
-            wrap.innerHTML = '<div class="lb-loading">ERROR: ' + (data.message || JSON.stringify(data)) + '</div>';
-            return;
-        }
-        if (data.length === 0) {
-            wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>';
-            lbLastData = [];
-            return;
-        }
-        lbLastData = data;
-        renderLeaderboardTable(data, mode);
-    } catch(e) {
-        wrap.innerHTML = '<div class="lb-loading">ERROR LOADING — CHECK CONNECTION</div>';
-        console.error(e);
-    }
+        if (!data) { wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>'; lbLastData = []; return; }
+        if (!Array.isArray(data)) { wrap.innerHTML = '<div class="lb-loading">ERROR: ' + (data.message || JSON.stringify(data)) + '</div>'; return; }
+        if (data.length === 0) { wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>'; lbLastData = []; return; }
+        lbLastData = data; renderLeaderboardTable(data, mode);
+    } catch(e) { wrap.innerHTML = '<div class="lb-loading">ERROR LOADING — CHECK CONNECTION</div>'; }
 }
 
-function escapeHtml(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+function escapeHtml(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 // ========================================
-// CASE LOOT POOL
+// CASE LOOT POOL — knives removed from snakebite
 // ========================================
 const caseLootPools = {
     'snakebite': [
@@ -1330,24 +1161,6 @@ const caseLootPools = {
         { name: 'Galil AR | Chromatic Aberration', type: 'Rifle', rarity: 'classified', imageName: 'galil-ar.webp', skinImageName: 'skin-galilar-chromaticaberration.webp', weight: 1.06 },
         { name: 'M4A4 | In Living Color', type: 'Rifle', rarity: 'covert', imageName: 'm4a4.webp', skinImageName: 'skin-m4a4-inlivingcolor.webp', weight: 0.32 },
         { name: 'USP-S | The Traitor', type: 'Pistol', rarity: 'covert', imageName: 'usp-s.webp', skinImageName: 'skin-usps-thetraitor.webp', weight: 0.32 },
-        { name: '★ Bayonet', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-bayonet.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Bowie Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-bowieknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Butterfly Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-butterflyknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Falchion Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-falchionknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Flip Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-flipknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Gut Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-gutknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Huntsman Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-huntsmanknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Karambit', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-karambit.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ M9 Bayonet', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-m9bayonet.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Navaja Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-navajaknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Nomad Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-nomadknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Paracord Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-paracordknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Shadow Daggers', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-shadowdaggers.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Skeleton Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-skeletonknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Stiletto Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-stilettoknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Survival Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-survivalknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Talon Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-talonknife.webp', brightness: 0.5, weight: 0.0054 },
-        { name: '★ Ursus Knife', type: 'Knife', rarity: 'covert', imageName: 'knifet.webp', skinImageName: 'skin-ursusknife.webp', brightness: 0.5, weight: 0.0054 },
         { name: '★ Broken Fang Gloves | Unhinged', type: 'Gloves', rarity: 'covert', imageName: 'glovest.webp', skinImageName: 'skin-brokenfanggloves-unhinged.webp', weight: 0.0108 },
         { name: '★ Broken Fang Gloves | Jade', type: 'Gloves', rarity: 'covert', imageName: 'glovest.webp', skinImageName: 'skin-brokenfanggloves-jade.webp', weight: 0.0108 },
         { name: '★ Broken Fang Gloves | Yellow-Whip', type: 'Gloves', rarity: 'covert', imageName: 'glovest.webp', skinImageName: 'skin-brokenfanggloves-yellowwhip.webp', weight: 0.0108 },
@@ -1393,7 +1206,7 @@ function openCase(caseItem) {
     const lootPool = caseLootPools[caseTypeId] || caseLootPools['snakebite'];
     const winningItem = selectRandomItem(lootPool);
     const ITEM_WIDTH = 198, TOTAL_ITEMS = 60, WIN_INDEX = 45;
-    const fillerPool = lootPool.filter(item => !(item.rarity === 'covert' && (item.type === 'Knife' || item.type === 'Gloves')));
+    const fillerPool = lootPool.filter(item => item.type !== 'Gloves');
     const items = [];
     for (let i = 0; i < TOTAL_ITEMS; i++) items.push(i === WIN_INDEX ? Object.assign({}, winningItem) : selectRandomItem(fillerPool));
     const overlay = document.getElementById('caseOpeningOverlay');
@@ -1403,7 +1216,7 @@ function openCase(caseItem) {
     items.forEach(item => {
         const itemEl = document.createElement('div');
         itemEl.className = 'roll-item ' + item.rarity;
-        const isGold = item.rarity === 'covert' && (item.type === 'Knife' || item.type === 'Gloves');
+        const isGold = item.type === 'Gloves'; // gold image for gloves in roller
         const imagePath = isGold ? 'images/gold.webp' : getItemImagePath(item);
         const imageStyle = (!isGold && item.brightness) ? 'style="filter: brightness(' + item.brightness + ')"' : '';
         itemEl.innerHTML = '<div class="roll-item-image"><img src="' + imagePath + '" alt="' + item.name + '" ' + imageStyle + '></div><div class="roll-item-name">' + item.name + '</div>';
@@ -1430,7 +1243,6 @@ function openCase(caseItem) {
     skipBtn.style.animation = 'fadeInDelay 0.3s ease 1.5s forwards';
     skipBtn.onclick = finishOpening;
     setTimeout(finishOpening, 6500);
-
     casesOpened++;
     localStorage.setItem('casesOpened', casesOpened);
 }
@@ -1454,8 +1266,11 @@ function showWinReveal(item, openedCase) {
         sellHint.style.display = 'none';
         winSellBtn.style.display = 'none';
     }
-    const revealImagePath = (item.rarity === 'covert' && (item.type === 'Knife' || item.type === 'Gloves')) ? 'images/gold.webp' : getItemImagePath(item);
+
+    // Win reveal always shows the ACTUAL skin image, never gold
+    const revealImagePath = getItemImagePath(item);
     document.getElementById('winImage').innerHTML = '<img src="' + revealImagePath + '" alt="' + item.name + '" style="max-width:90%;max-height:90%;object-fit:contain;">';
+
     winOverlay.classList.add('active');
     const wonItem = { id: Date.now(), name: item.name, type: item.type, rarity: item.rarity, imageName: item.imageName };
     if (item.brightness) wonItem.brightness = item.brightness;
@@ -1479,23 +1294,18 @@ function showWinReveal(item, openedCase) {
     openAnotherBtn.style.display = remainingCases.length > 0 ? 'inline-block' : 'none';
 
     document.getElementById('winCloseBtn').onclick = () => { winOverlay.classList.remove('active'); closeInspectModal(); };
-
     winSellBtn.onclick = () => {
         if (pendingWonItemId !== null) {
             let wins = JSON.parse(localStorage.getItem('userWins')) || [];
             wins = wins.filter(w => w.id !== pendingWonItemId);
             localStorage.setItem('userWins', JSON.stringify(wins));
-            addCurrency(getSellValue(pendingWinItem));
-            showCoinPopup(getSellValue(pendingWinItem));
+            addCurrency(getSellValue(pendingWinItem)); showCoinPopup(getSellValue(pendingWinItem));
             pendingWonItemId = null; pendingWinItem = null;
-            renderInventory();
-            if (currentSort !== 'newest') sortInventory(currentSort);
+            renderInventory(); if (currentSort !== 'newest') sortInventory(currentSort);
             scheduleSyncToSupabase();
         }
-        winOverlay.classList.remove('active');
-        closeInspectModal();
+        winOverlay.classList.remove('active'); closeInspectModal();
     };
-
     if (remainingCases.length > 0) {
         openAnotherBtn.onclick = () => { winOverlay.classList.remove('active'); openCase(remainingCases[0]); };
     }
