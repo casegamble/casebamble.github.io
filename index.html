@@ -647,6 +647,47 @@
     </div>
 </div>
 
+<!-- Rename Modal -->
+<div class="rename-modal" id="renameModal">
+    <div class="rename-modal-box">
+        <div class="rename-modal-title">CHANGE USERNAME</div>
+        <div class="rename-modal-sub">PICK A NEW NAME FOR THE LEADERBOARD</div>
+        <input class="username-input" id="renameInput" type="text" maxlength="20" placeholder="NEW NAME..." autocomplete="off">
+        <div class="rename-error" id="renameError"></div>
+        <div class="rename-btn-row">
+            <button class="rename-cancel-btn" id="renameCancelBtn">CANCEL</button>
+            <button class="username-confirm-btn" id="renameConfirmBtn">SAVE</button>
+        </div>
+    </div>
+</div>
+
+<!-- Speed Sell Menu -->
+<div class="speed-sell-menu" id="speedSellMenu">
+    <div class="speed-sell-menu-box">
+        <div class="ss-menu-title">⚡ SPEED SELL</div>
+        <div class="ss-menu-sub">SELECT RARITY FILTER THEN CHOOSE ACTION</div>
+        <div class="ss-rarity-filter">
+            <div class="ss-rarity-chip all active" data-rarity="all">ALL</div>
+            <div class="ss-rarity-chip mil-spec" data-rarity="mil-spec">MIL-SPEC</div>
+            <div class="ss-rarity-chip restricted" data-rarity="restricted">RESTRICTED</div>
+            <div class="ss-rarity-chip classified" data-rarity="classified">CLASSIFIED</div>
+            <div class="ss-rarity-chip covert" data-rarity="covert">COVERT</div>
+        </div>
+        <div class="ss-result" id="ssResult"></div>
+        <div class="ss-menu-actions">
+            <button class="ss-action-btn" id="ssSellAllBtn">
+                <span>SELL ALL</span>
+                <span class="ss-action-preview" id="ssSellAllPreview"></span>
+            </button>
+            <button class="ss-action-btn" id="ssSellAllButOneBtn">
+                <span>SELL ALL BUT 1 (PER TYPE)</span>
+                <span class="ss-action-preview" id="ssSellAllButOnePreview"></span>
+            </button>
+        </div>
+        <button class="ss-close-btn" id="ssCloseBtn">CLOSE</button>
+    </div>
+</div>
+
 <script>
 // ========================================
 // SUPABASE CONFIG
@@ -663,7 +704,6 @@ async function sbFetch(path, method = 'GET', body = null, extra = {}) {
     if (method === 'POST' || method === 'PATCH') {
         headers['Prefer'] = 'resolution=merge-duplicates,return=minimal';
     }
-    // Merge any extra headers (but don't override with bad Prefer on GETs)
     if (extra) {
         Object.keys(extra).forEach(k => {
             if (!(method === 'GET' && k === 'Prefer')) headers[k] = extra[k];
@@ -773,12 +813,8 @@ async function syncToSupabase() {
     const indicator = document.getElementById('syncIndicator');
     indicator.classList.add('visible');
     try {
-        // Check if this row is admin-locked before overwriting
         const existing = await sbFetch('players?select=locked&id=eq.' + encodeURIComponent(playerId), 'GET');
         if (existing && existing.length > 0 && existing[0].locked) {
-            // Row is locked by admin — don't overwrite, just read their set values
-            const row = existing[0];
-            console.log('Row is admin-locked, skipping sync');
             setTimeout(() => indicator.classList.remove('visible'), 1200);
             return;
         }
@@ -797,12 +833,10 @@ async function syncToSupabase() {
 }
 
 // ========================================
-// INIT: check if user needs username
+// INIT
 // ========================================
 function hardReset() {
     localStorage.clear();
-    // Don't reload — just show username modal directly with fresh state
-    // Re-init player ID since we cleared storage
     playerId = 'p_' + Math.random().toString(36).substr(2,12) + Date.now().toString(36);
     localStorage.setItem('playerId', playerId);
     playerUsername = null;
@@ -823,14 +857,12 @@ window.addEventListener('load', async () => {
         showUsernameModal();
         return;
     }
-    // Check if this player still exists in Supabase — if deleted, full reset
     try {
         const result = await sbFetch('players?select=*&id=eq.' + encodeURIComponent(playerId), 'GET');
         if (result && result.length === 0) {
             hardReset();
             return;
         }
-        // Use Supabase values as source of truth — so admin edits show instantly
         if (result && result.length > 0) {
             const row = result[0];
             if (row.balance !== undefined && row.balance !== null) {
@@ -849,9 +881,7 @@ window.addEventListener('load', async () => {
                 localStorage.setItem('bestItemRarity', bestItemRarity);
             }
         }
-    } catch(e) {
-        // Offline — let them in normally
-    }
+    } catch(e) {}
     syncToSupabase();
 });
 
@@ -1195,6 +1225,7 @@ mainNavItems.forEach(item => {
 // LEADERBOARD
 // ========================================
 let currentLbMode = 'balance';
+let lbLastData = [];
 
 document.querySelectorAll('.lb-tab').forEach(tab => {
     tab.addEventListener('click', function() {
@@ -1207,7 +1238,6 @@ document.querySelectorAll('.lb-tab').forEach(tab => {
 
 document.getElementById('lbRefreshBtn').addEventListener('click', () => loadLeaderboard(currentLbMode));
 
-// Leaderboard search filter
 document.addEventListener('input', e => {
     if (e.target.id === 'lbSearchInput' && lbLastData.length) {
         renderLeaderboardTable(lbLastData, currentLbMode);
@@ -1252,8 +1282,6 @@ async function loadLeaderboard(mode) {
     try {
         const orderCol = mode === 'balance' ? 'balance' : 'cases_opened';
         const data = await sbFetch('players?select=*&order=' + orderCol + '.desc&limit=50', 'GET');
-        console.log('Leaderboard data:', data);
-        // Handle error object from supabase (e.g. {message: '...', code: '...'})
         if (!data) {
             wrap.innerHTML = '<div class="lb-loading">NO PLAYERS YET — BE THE FIRST!</div>';
             lbLastData = [];
@@ -1261,7 +1289,6 @@ async function loadLeaderboard(mode) {
         }
         if (!Array.isArray(data)) {
             wrap.innerHTML = '<div class="lb-loading">ERROR: ' + (data.message || JSON.stringify(data)) + '</div>';
-            console.error('Unexpected response:', data);
             return;
         }
         if (data.length === 0) {
@@ -1404,7 +1431,6 @@ function openCase(caseItem) {
     skipBtn.onclick = finishOpening;
     setTimeout(finishOpening, 6500);
 
-    // Track cases opened
     casesOpened++;
     localStorage.setItem('casesOpened', casesOpened);
 }
@@ -1482,47 +1508,6 @@ document.getElementById('unlockCaseBtn').addEventListener('click', function() {
     }
 });
 </script>
-
-<!-- Rename Modal -->
-<div class="rename-modal" id="renameModal">
-    <div class="rename-modal-box">
-        <div class="rename-modal-title">CHANGE USERNAME</div>
-        <div class="rename-modal-sub">PICK A NEW NAME FOR THE LEADERBOARD</div>
-        <input class="username-input" id="renameInput" type="text" maxlength="20" placeholder="NEW NAME..." autocomplete="off">
-        <div class="rename-error" id="renameError"></div>
-        <div class="rename-btn-row">
-            <button class="rename-cancel-btn" id="renameCancelBtn">CANCEL</button>
-            <button class="username-confirm-btn" id="renameConfirmBtn">SAVE</button>
-        </div>
-    </div>
-</div>
-
-<!-- Speed Sell Menu -->
-<div class="speed-sell-menu" id="speedSellMenu">
-    <div class="speed-sell-menu-box">
-        <div class="ss-menu-title">⚡ SPEED SELL</div>
-        <div class="ss-menu-sub">SELECT RARITY FILTER THEN CHOOSE ACTION</div>
-        <div class="ss-rarity-filter">
-            <div class="ss-rarity-chip all active" data-rarity="all">ALL</div>
-            <div class="ss-rarity-chip mil-spec" data-rarity="mil-spec">MIL-SPEC</div>
-            <div class="ss-rarity-chip restricted" data-rarity="restricted">RESTRICTED</div>
-            <div class="ss-rarity-chip classified" data-rarity="classified">CLASSIFIED</div>
-            <div class="ss-rarity-chip covert" data-rarity="covert">COVERT</div>
-        </div>
-        <div class="ss-result" id="ssResult"></div>
-        <div class="ss-menu-actions">
-            <button class="ss-action-btn" id="ssSellAllBtn">
-                <span>SELL ALL</span>
-                <span class="ss-action-preview" id="ssSellAllPreview"></span>
-            </button>
-            <button class="ss-action-btn" id="ssSellAllButOneBtn">
-                <span>SELL ALL BUT 1 (PER TYPE)</span>
-                <span class="ss-action-preview" id="ssSellAllButOnePreview"></span>
-            </button>
-        </div>
-        <button class="ss-close-btn" id="ssCloseBtn">CLOSE</button>
-    </div>
-</div>
 
 </body>
 </html>
