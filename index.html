@@ -1027,7 +1027,7 @@ function showCaseDetails(caseId) {
         gloveItems.forEach(item => {
             const itemDiv = document.createElement('div'); itemDiv.className = 'case-details-item covert';
             // Always show gold.webp for gloves in the preview
-            itemDiv.innerHTML = '<div class="case-details-item-image"><img src="images/gold.webp" alt="' + item.name + '"></div><div class="case-details-item-name">' + item.name + '</div>';
+            itemDiv.innerHTML = '<div class="case-details-item-image"><img src="' + getItemImagePath(item) + '" alt="' + item.name + '"></div><div class="case-details-item-name">' + item.name + '</div>';
             gridDiv.appendChild(itemDiv);
         });
         groupDiv.appendChild(gridDiv); itemsContainer.appendChild(groupDiv);
